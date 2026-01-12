@@ -27,7 +27,7 @@ public class AccountTransaction
     public string Currency { get; set; }
 
     [Column("transaction_at")]
-    [DisplayName("Transaction Date")]
+    [DisplayName("Transaction At")]
     public DateTime TransactionAt { get; set; }
 
     [Column("payment_method")]

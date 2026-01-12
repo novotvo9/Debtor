@@ -1,0 +1,33 @@
+﻿@model List<Account>
+
+@{
+    ViewData["Title"] = "Account List";
+}
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Account Type</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Transaction List</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Account account in Model)
+        {
+            <tr>
+                <td scope="row">@account.Id</td>
+                <td>@account.FullName</td>
+                <td>@account.AccountType</td>
+                <td>@account.Email</td>
+                <td>@account.Phone</td>
+                <td>@account.CreatedAt</td>
+                <td><a class="btn btn-primary" asp-controller="Accounts" asp-action="Detail" asp-route-id="@account.Id"> Detail</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

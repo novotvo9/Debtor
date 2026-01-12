@@ -1,0 +1,34 @@
+﻿@model List<AccountTransaction>
+
+@{
+    ViewData["Title"] = "Transactions Detail";
+}
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Account ID</th>
+            <th scope="col">Transaction Type</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Currency</th>
+            <th scope="col">Transaction At</th>
+            <th scope="col">Payment Method</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AccountTransaction transaction in Model)
+        {
+            <tr>
+                <td scope="row">@transaction.Id</td>
+                <td>@transaction.AccountId</td>
+                <td>@transaction.TransactionType</td>
+                <td>@transaction.Amount</td>
+                <td>@transaction.Currency</td>
+                <td>@transaction.TransactionAt</td>
+                <td>@transaction.PaymentMethod</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-primary" asp-controller="Accounts" asp-action="All">Back to list</a>

@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #eefaf1;
+}
