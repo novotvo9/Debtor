@@ -14,6 +14,7 @@
             <th scope="col">Currency</th>
             <th scope="col">Transaction At</th>
             <th scope="col">Payment Method</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,11 @@
                 <td>@transaction.Currency</td>
                 <td>@transaction.TransactionAt</td>
                 <td>@transaction.PaymentMethod</td>
+                <td>
+                    <form method="post" asp-controller="Transactions" asp-action="Delete" asp-route-id="@transaction.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

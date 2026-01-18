@@ -18,4 +18,19 @@ public class TransactionsController : Controller
     {
         return View(Transactions);
     }
+
+    [HttpPost]
+    public IActionResult Delete(int id)
+    {
+        AccountTransaction? transaction = MyDbContext.AccountTransactions.FirstOrDefault(t => t.Id == id);
+        if (transaction == null)
+        {
+            return NotFound();
+        }
+
+        MyDbContext.Remove(transaction);
+        MyDbContext.SaveChanges();
+
+        return RedirectToAction(nameof(All));
+    }
 }

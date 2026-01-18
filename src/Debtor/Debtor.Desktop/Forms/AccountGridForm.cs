@@ -1,5 +1,6 @@
 ﻿using Debtor.DataAcess.Contexts;
 using Debtor.DataAcess.Entities;
+using Debtor.ImportExport;
 using System.ComponentModel;
 
 namespace Debtor.Desktop.Forms;
@@ -23,5 +24,34 @@ public partial class AccountGridForm : Form
 
         DataGridViewColumn lastCol = dataGridView_Accounts.Columns[dataGridView_Accounts.Columns.Count - 1];
         lastCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+    }
+
+    private void Button_ExportCSV_Click(object sender, EventArgs e)
+    {
+        saveFileDialog_ExportCSV.FileName = $"{DateTime.Now.Year}.{DateTime.Now.Month}.{DateTime.Now.Day}-Accounts";
+        DialogResult result = saveFileDialog_ExportCSV.ShowDialog();
+        if (result != DialogResult.Cancel || string.IsNullOrWhiteSpace(saveFileDialog_ExportCSV.FileName) == false)
+        {
+            string filePath = saveFileDialog_ExportCSV.FileName;
+            Exporter.ExportAccountsCsv(filePath, MyDbContext.Accounts.ToList());
+            MessageBox.Show("Accounts Exported!", "Export Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+
+    private void Button_Delete_Click(object sender, EventArgs e)
+    {
+        if (dataGridView_Accounts.CurrentRow != null)
+        {
+            Account account = AccountsData[dataGridView_Accounts.CurrentRow.Index];
+            DialogResult dialogResult = MessageBox.Show($"Do you really wish to delete account {account.Id}?", "Confirm delete", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                MyDbContext.Accounts.Remove(account);
+                MyDbContext.SaveChanges();
+
+                AccountsData.Remove(account);
+            }
+        }
     }
 }

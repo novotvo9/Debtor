@@ -32,4 +32,19 @@ public class AccountsController : Controller
 
         return View(slectedAccountTransactions);
     }
+
+    [HttpPost]
+    public IActionResult Delete(Guid id)
+    {
+        Account? account = MyDbContext.Accounts.FirstOrDefault(a => a.Id == id);
+        if (account == null)
+        {
+            return NotFound();
+        }
+
+        MyDbContext.Remove(account);
+        MyDbContext.SaveChanges();
+
+        return RedirectToAction(nameof(All));
+    }
 }
