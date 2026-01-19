@@ -21,7 +21,7 @@
         @foreach (AccountTransaction transaction in Model)
         {
             <tr>
-                <td scope="row">@transaction.Id</td>
+                <td>@transaction.Id</td>
                 <td>@transaction.AccountId</td>
                 <td>@transaction.TransactionType</td>
                 <td>@transaction.Amount</td>
@@ -30,11 +30,14 @@
                 <td>@transaction.PaymentMethod</td>
                 <td>
                     <form method="post" asp-controller="Transactions" asp-action="Delete" asp-route-id="@transaction.Id">
-                        <button type="submit">Delete</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+@* TODO: lepší redirect, bacha na null; přidat modaly *@
+
+@if (Model.Count != 0) { <a class="btn btn-primary" asp-controller="Accounts" asp-action="Detail" asp-route-id="@Model[0].AccountId">Back to detail</a>}
 <a class="btn btn-primary" asp-controller="Accounts" asp-action="All">Back to list</a>

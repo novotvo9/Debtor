@@ -55,4 +55,9 @@ public partial class AccountTransactionGridForm : Form
             }
         }
     }
+
+    private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
 }

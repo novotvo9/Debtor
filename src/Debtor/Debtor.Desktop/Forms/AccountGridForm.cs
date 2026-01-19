@@ -28,7 +28,7 @@ public partial class AccountGridForm : Form
 
     private void Button_ExportCSV_Click(object sender, EventArgs e)
     {
-        saveFileDialog_ExportCSV.FileName = $"{DateTime.Now.Year}.{DateTime.Now.Month}.{DateTime.Now.Day}-Accounts";
+        saveFileDialog_ExportCSV.FileName = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}-Accounts";
         DialogResult result = saveFileDialog_ExportCSV.ShowDialog();
         if (result != DialogResult.Cancel || string.IsNullOrWhiteSpace(saveFileDialog_ExportCSV.FileName) == false)
         {
@@ -53,5 +53,10 @@ public partial class AccountGridForm : Form
                 AccountsData.Remove(account);
             }
         }
+    }
+
+    private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
     }
 }

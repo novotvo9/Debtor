@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.3
+-- version 5.2.1deb1+deb12u1
 -- https://www.phpmyadmin.net/
 --
--- Počítač: 127.0.0.1:3307
--- Vytvořeno: Ned 11. led 2026, 20:01
--- Verze serveru: 10.4.32-MariaDB
--- Verze PHP: 8.2.12
+-- Počítač: localhost:3306
+-- Vytvořeno: Pon 19. led 2026, 10:35
+-- Verze serveru: 10.11.11-MariaDB-0+deb12u1
+-- Verze PHP: 8.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,18 +41,16 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`account_id`, `full_name`, `account_type`, `email`, `phone`, `created_at`) VALUES
-('b2d4d86b-ef14-11f0-96d7-e40d36ebf1a8', 'Jan Novák', 'debtor', 'jan.novak@email.cz', '777111222', '2026-01-11 18:41:02'),
-('b2d4e10a-ef14-11f0-96d7-e40d36ebf1a8', 'Petr Svoboda', 'debtor', 'petr.svoboda@email.cz', '777333444', '2026-01-11 18:41:02'),
-('b2d4e2c5-ef14-11f0-96d7-e40d36ebf1a8', 'Lucie Dvořáková', 'debtor', 'lucie.dvorakova@email.cz', '777555666', '2026-01-11 18:41:02'),
-('b2d4e370-ef14-11f0-96d7-e40d36ebf1a8', 'Tomáš Černý', 'debtor', 'tomas.cerny@email.cz', '777777888', '2026-01-11 18:41:02'),
-('b2d4e402-ef14-11f0-96d7-e40d36ebf1a8', 'Eva Procházková', 'debtor', 'eva.prochazkova@email.cz', '777999000', '2026-01-11 18:41:02'),
-('b2d4e485-ef14-11f0-96d7-e40d36ebf1a8', 'Martin Král', 'debtor', 'martin.kral@email.cz', '776111222', '2026-01-11 18:41:02'),
-('b2d4e510-ef14-11f0-96d7-e40d36ebf1a8', 'Veronika Malá', 'debtor', 'veronika.mala@email.cz', '776333444', '2026-01-11 18:41:02'),
-('b2d4e599-ef14-11f0-96d7-e40d36ebf1a8', 'David Veselý', 'debtor', 'david.vesely@email.cz', '776555666', '2026-01-11 18:41:02'),
-('b2d4e64b-ef14-11f0-96d7-e40d36ebf1a8', 'Alena Kučerová', 'debtor', 'alena.kucerova@email.cz', '776777888', '2026-01-11 18:41:02'),
-('b2d4e6d5-ef14-11f0-96d7-e40d36ebf1a8', 'Jakub Němec', 'debtor', 'jakub.nemec@email.cz', '776999000', '2026-01-11 18:41:02'),
-('b2d4e75b-ef14-11f0-96d7-e40d36ebf1a8', 'Simona Horáková', 'debtor', 'simona.horakova@email.cz', '775111222', '2026-01-11 18:41:02'),
-('b2d4e7e2-ef14-11f0-96d7-e40d36ebf1a8', 'Michal Beneš', 'debtor', 'michal.benes@email.cz', '775333444', '2026-01-11 18:41:02');
+('1f8c9b7e-3a2d-4e6b-9a5c-d7f8e1b2a6c4', 'Veronika Malá', 'debtor', 'veronika.m@email.cz', '777888999', '2026-01-19 11:31:49'),
+('4c7e2a6d-9f1b-4e8a-a3c5-d6b9f1e8c2a7', 'Alena Kučerová', 'debtor', 'alena.k@email.cz', '778333444', '2026-01-19 11:31:49'),
+('6d4a8f2e-9b1c-4d7a-a5e3-1f9c8b6d2e7a', 'Martin Král', 'testor', 'martin.k@email.cz', '777666777', '2026-01-19 11:31:49'),
+('8a5f6d2c-1e9b-4c7a-bd3f-2e8a9c6d4f1b', 'Jakub Němec', 'debtor', 'jakub.n@email.cz', '778555666', '2026-01-19 11:31:49'),
+('9d2f7a6c-1b4e-45c8-a0f1-3e6b9d8a2c7f', 'Lucie Dvořáková', 'debtor', 'lucie.d@email.cz', '777333444', '2026-01-19 11:31:49'),
+('a8b7e1c3-42f6-4d9a-9c2e-7b1a6f8d5e4c', 'Petr Svoboda', 'testor', 'petr.svoboda@email.cz', '777222333', '2026-01-19 11:31:49'),
+('b2e6c4d8-7a1f-4b9e-8c5d-3a9f1e6d2b7c', 'David Veselý', 'debtor', 'david.v@email.cz', '778111222', '2026-01-19 11:31:49'),
+('c4e8a1d9-7f6b-4a2e-9c0d-5b3f8e1a6d2c', 'Tomáš Černý', 'debtor', 'tomas.c@email.cz', '777444555', '2026-01-19 11:31:49'),
+('e7b3a9d6-2f1c-4e8a-b5d0-9c6f1a3e8d7b', 'Eva Procházková', 'debtor', 'eva.p@email.cz', '777555666', '2026-01-19 11:31:49'),
+('f3a1c4b2-9e5d-4f6a-b8a3-21a9f3c1d4e7', 'Jan Novák', 'debtor', 'jan.novak@email.cz', '777111222', '2026-01-19 11:31:49');
 
 -- --------------------------------------------------------
 
@@ -75,44 +73,23 @@ CREATE TABLE `account_transactions` (
 --
 
 INSERT INTO `account_transactions` (`transaction_id`, `account_id`, `transaction_type`, `amount`, `currency`, `transaction_at`, `payment_method`) VALUES
-(2, 'b2d4d86b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1500.00, 'CZK', '2025-12-09 18:41:57', 'bank'),
-(3, 'b2d4d86b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -2000.00, 'CZK', '2025-12-17 18:41:57', 'bank'),
-(5, 'b2d4d86b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1000.00, 'CZK', '2025-12-30 18:41:57', 'cash'),
-(7, 'b2d4e10a-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1000.00, 'CZK', '2025-11-24 18:41:57', 'cash'),
-(8, 'b2d4e10a-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1000.00, 'CZK', '2025-12-01 18:41:57', 'bank'),
-(9, 'b2d4e10a-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1200.00, 'CZK', '2025-12-12 18:41:57', 'bank'),
-(11, 'b2d4e10a-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -800.00, 'CZK', '2026-01-05 18:41:57', 'cash'),
-(13, 'b2d4e2c5-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -500.00, 'CZK', '2025-12-27 18:41:57', 'bank'),
-(14, 'b2d4e2c5-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -700.00, 'CZK', '2026-01-02 18:41:57', 'bank'),
-(16, 'b2d4e370-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -3000.00, 'CZK', '2025-10-28 18:41:57', 'bank'),
-(17, 'b2d4e370-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -2500.00, 'CZK', '2025-11-12 18:41:57', 'bank'),
-(18, 'b2d4e370-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -2000.00, 'CZK', '2025-11-27 18:41:57', 'cash'),
-(19, 'b2d4e370-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -2000.00, 'CZK', '2025-12-12 18:41:57', 'bank'),
-(21, 'b2d4e402-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -400.00, 'CZK', '2025-12-21 18:41:57', 'cash'),
-(22, 'b2d4e402-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -600.00, 'CZK', '2025-12-28 18:41:57', 'bank'),
-(23, 'b2d4e402-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -500.00, 'CZK', '2026-01-04 18:41:57', 'bank'),
-(25, 'b2d4e485-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1500.00, 'CZK', '2025-11-09 18:41:57', 'bank'),
-(26, 'b2d4e485-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1500.00, 'CZK', '2025-11-22 18:41:57', 'cash'),
-(28, 'b2d4e485-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1000.00, 'CZK', '2026-01-01 18:41:57', 'bank'),
-(30, 'b2d4e510-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -300.00, 'CZK', '2026-01-03 18:41:57', 'cash'),
-(32, 'b2d4e599-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1000.00, 'CZK', '2025-11-14 18:41:57', 'bank'),
-(33, 'b2d4e599-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1000.00, 'CZK', '2025-11-28 18:41:57', 'bank'),
-(34, 'b2d4e599-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1000.00, 'CZK', '2025-12-11 18:41:57', 'cash'),
-(35, 'b2d4e599-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1200.00, 'CZK', '2025-12-25 18:41:57', 'bank'),
-(37, 'b2d4e64b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -800.00, 'CZK', '2025-12-16 18:41:57', 'bank'),
-(38, 'b2d4e64b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -900.00, 'CZK', '2025-12-23 18:41:57', 'cash'),
-(39, 'b2d4e64b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -700.00, 'CZK', '2026-01-06 18:41:57', 'bank'),
-(40, 'b2d4e6d5-ef14-11f0-96d7-e40d36ebf1a8', 'debt', 2000.00, 'CZK', '2025-12-30 18:41:57', ''),
-(41, 'b2d4e6d5-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -200.00, 'CZK', '2026-01-07 18:41:57', 'cash'),
-(42, 'b2d4e75b-ef14-11f0-96d7-e40d36ebf1a8', 'debt', 18000.00, 'CZK', '2025-09-13 18:41:57', ''),
-(43, 'b2d4e75b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -3000.00, 'CZK', '2025-10-13 18:41:57', 'bank'),
-(44, 'b2d4e75b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -2500.00, 'CZK', '2025-11-12 18:41:57', 'bank'),
-(45, 'b2d4e75b-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -1500.00, 'CZK', '2025-12-12 18:41:57', 'cash'),
-(46, 'b2d4e75b-ef14-11f0-96d7-e40d36ebf1a8', 'debt', 1500.00, 'CZK', '2025-12-22 18:41:57', ''),
-(47, 'b2d4e7e2-ef14-11f0-96d7-e40d36ebf1a8', 'debt', 7200.00, 'CZK', '2025-11-20 18:41:57', ''),
-(48, 'b2d4e7e2-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -900.00, 'CZK', '2025-12-04 18:41:57', 'bank'),
-(49, 'b2d4e7e2-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -900.00, 'CZK', '2025-12-18 18:41:57', 'cash'),
-(50, 'b2d4e7e2-ef14-11f0-96d7-e40d36ebf1a8', 'payment', -900.00, 'CZK', '2026-01-01 18:41:57', 'bank');
+(53, 'a8b7e1c3-42f6-4d9a-9c2e-7b1a6f8d5e4c', 'payment', -2000.00, 'CZK', '2025-12-01 18:00:00', 'bank'),
+(54, 'a8b7e1c3-42f6-4d9a-9c2e-7b1a6f8d5e4c', 'payment', -1500.00, 'CZK', '2026-01-05 17:30:00', 'cash'),
+(56, '9d2f7a6c-1b4e-45c8-a0f1-3e6b9d8a2c7f', 'payment', -2000.00, 'CZK', '2025-11-10 14:00:00', 'bank'),
+(57, '9d2f7a6c-1b4e-45c8-a0f1-3e6b9d8a2c7f', 'payment', -2000.00, 'CZK', '2025-12-10 14:00:00', 'bank'),
+(58, '9d2f7a6c-1b4e-45c8-a0f1-3e6b9d8a2c7f', 'payment', -1500.00, 'CZK', '2026-01-02 16:00:00', 'cash'),
+(59, '9d2f7a6c-1b4e-45c8-a0f1-3e6b9d8a2c7f', 'payment', -1000.00, 'CZK', '2026-01-06 16:00:00', 'bank'),
+(62, 'c4e8a1d9-7f6b-4a2e-9c0d-5b3f8e1a6d2c', 'payment', -3000.00, 'CZK', '2025-10-01 18:00:00', 'bank'),
+(63, 'c4e8a1d9-7f6b-4a2e-9c0d-5b3f8e1a6d2c', 'payment', -3000.00, 'CZK', '2025-11-01 18:00:00', 'bank'),
+(64, 'c4e8a1d9-7f6b-4a2e-9c0d-5b3f8e1a6d2c', 'payment', -2500.00, 'CZK', '2025-12-01 18:00:00', 'cash'),
+(65, 'c4e8a1d9-7f6b-4a2e-9c0d-5b3f8e1a6d2c', 'payment', -2000.00, 'CZK', '2025-12-20 18:00:00', 'bank'),
+(66, 'c4e8a1d9-7f6b-4a2e-9c0d-5b3f8e1a6d2c', 'payment', -1500.00, 'CZK', '2026-01-05 18:00:00', 'bank'),
+(67, 'c4e8a1d9-7f6b-4a2e-9c0d-5b3f8e1a6d2c', 'payment', -1200.00, 'CZK', '2026-01-10 18:00:00', 'cash'),
+(70, 'e7b3a9d6-2f1c-4e8a-b5d0-9c6f1a3e8d7b', 'payment', -1000.00, 'CZK', '2026-01-05 15:00:00', 'cash'),
+(72, '6d4a8f2e-9b1c-4d7a-a5e3-1f9c8b6d2e7a', 'payment', -2000.00, 'CZK', '2025-11-20 18:00:00', 'bank'),
+(73, '6d4a8f2e-9b1c-4d7a-a5e3-1f9c8b6d2e7a', 'payment', -2000.00, 'CZK', '2025-12-05 18:00:00', 'bank'),
+(74, '6d4a8f2e-9b1c-4d7a-a5e3-1f9c8b6d2e7a', 'payment', -1500.00, 'CZK', '2025-12-20 18:00:00', 'cash'),
+(75, '6d4a8f2e-9b1c-4d7a-a5e3-1f9c8b6d2e7a', 'payment', -1000.00, 'CZK', '2026-01-10 18:00:00', 'bank');
 
 --
 -- Indexy pro exportované tabulky
@@ -140,7 +117,7 @@ ALTER TABLE `account_transactions`
 -- AUTO_INCREMENT pro tabulku `account_transactions`
 --
 ALTER TABLE `account_transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- Omezení pro exportované tabulky

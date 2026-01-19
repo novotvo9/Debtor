@@ -32,7 +32,17 @@ partial class AccountTransactionGridForm
         button_ExportCSV = new Button();
         saveFileDialog_ExportCSV = new SaveFileDialog();
         button_Delete = new Button();
+        menuStrip_Toolbar = new MenuStrip();
+        fileToolStripMenuItem = new ToolStripMenuItem();
+        exitToolStripMenuItem = new ToolStripMenuItem();
+        aboutDebtorToolStripMenuItem = new ToolStripMenuItem();
+        githubToolStripMenuItem = new ToolStripMenuItem();
+        webAppToolStripMenuItem = new ToolStripMenuItem();
+        statusStrip_Status = new StatusStrip();
+        toolStripStatusLabel_Copyright = new ToolStripStatusLabel();
         ((System.ComponentModel.ISupportInitialize)dataGridView_AccountTransactions).BeginInit();
+        menuStrip_Toolbar.SuspendLayout();
+        statusStrip_Status.SuspendLayout();
         SuspendLayout();
         // 
         // dataGridView_AccountTransactions
@@ -44,15 +54,16 @@ partial class AccountTransactionGridForm
         dataGridView_AccountTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         dataGridView_AccountTransactions.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         dataGridView_AccountTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        dataGridView_AccountTransactions.Location = new Point(12, 12);
+        dataGridView_AccountTransactions.Location = new Point(12, 27);
+        dataGridView_AccountTransactions.MultiSelect = false;
         dataGridView_AccountTransactions.Name = "dataGridView_AccountTransactions";
         dataGridView_AccountTransactions.ReadOnly = true;
-        dataGridView_AccountTransactions.Size = new Size(1310, 587);
+        dataGridView_AccountTransactions.Size = new Size(1310, 559);
         dataGridView_AccountTransactions.TabIndex = 0;
         // 
         // button_ExportCSV
         // 
-        button_ExportCSV.Location = new Point(12, 605);
+        button_ExportCSV.Location = new Point(12, 592);
         button_ExportCSV.Name = "button_ExportCSV";
         button_ExportCSV.Size = new Size(136, 34);
         button_ExportCSV.TabIndex = 1;
@@ -68,7 +79,7 @@ partial class AccountTransactionGridForm
         // 
         // button_Delete
         // 
-        button_Delete.Location = new Point(154, 605);
+        button_Delete.Location = new Point(154, 592);
         button_Delete.Name = "button_Delete";
         button_Delete.Size = new Size(136, 34);
         button_Delete.TabIndex = 1;
@@ -76,23 +87,91 @@ partial class AccountTransactionGridForm
         button_Delete.UseVisualStyleBackColor = true;
         button_Delete.Click += Button_Delete_Click;
         // 
+        // menuStrip_Toolbar
+        // 
+        menuStrip_Toolbar.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, aboutDebtorToolStripMenuItem });
+        menuStrip_Toolbar.Location = new Point(0, 0);
+        menuStrip_Toolbar.Name = "menuStrip_Toolbar";
+        menuStrip_Toolbar.RenderMode = ToolStripRenderMode.Professional;
+        menuStrip_Toolbar.Size = new Size(1334, 24);
+        menuStrip_Toolbar.TabIndex = 2;
+        menuStrip_Toolbar.Text = "menuStrip1";
+        // 
+        // fileToolStripMenuItem
+        // 
+        fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
+        fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+        fileToolStripMenuItem.Size = new Size(37, 20);
+        fileToolStripMenuItem.Text = "&File";
+        // 
+        // exitToolStripMenuItem
+        // 
+        exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+        exitToolStripMenuItem.Size = new Size(92, 22);
+        exitToolStripMenuItem.Text = "&Exit";
+        exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
+        // 
+        // aboutDebtorToolStripMenuItem
+        // 
+        aboutDebtorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { githubToolStripMenuItem, webAppToolStripMenuItem });
+        aboutDebtorToolStripMenuItem.Name = "aboutDebtorToolStripMenuItem";
+        aboutDebtorToolStripMenuItem.Size = new Size(91, 20);
+        aboutDebtorToolStripMenuItem.Text = "&About Debtor";
+        // 
+        // githubToolStripMenuItem
+        // 
+        githubToolStripMenuItem.Name = "githubToolStripMenuItem";
+        githubToolStripMenuItem.Size = new Size(123, 22);
+        githubToolStripMenuItem.Text = "&Github";
+        // 
+        // webAppToolStripMenuItem
+        // 
+        webAppToolStripMenuItem.Name = "webAppToolStripMenuItem";
+        webAppToolStripMenuItem.Size = new Size(123, 22);
+        webAppToolStripMenuItem.Text = "&Web App";
+        // 
+        // statusStrip_Status
+        // 
+        statusStrip_Status.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel_Copyright });
+        statusStrip_Status.Location = new Point(0, 629);
+        statusStrip_Status.Name = "statusStrip_Status";
+        statusStrip_Status.RenderMode = ToolStripRenderMode.Professional;
+        statusStrip_Status.Size = new Size(1334, 22);
+        statusStrip_Status.TabIndex = 3;
+        statusStrip_Status.Text = "statusStrip1";
+        // 
+        // toolStripStatusLabel_Copyright
+        // 
+        toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
+        toolStripStatusLabel_Copyright.Size = new Size(1319, 17);
+        toolStripStatusLabel_Copyright.Spring = true;
+        toolStripStatusLabel_Copyright.Text = "@Vojtěch Novotný 2026";
+        // 
         // AccountTransactionGridForm
         // 
         AutoScaleDimensions = new SizeF(11F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1334, 651);
+        Controls.Add(statusStrip_Status);
         Controls.Add(button_Delete);
         Controls.Add(button_ExportCSV);
         Controls.Add(dataGridView_AccountTransactions);
+        Controls.Add(menuStrip_Toolbar);
         Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
         FormBorderStyle = FormBorderStyle.FixedSingle;
+        MainMenuStrip = menuStrip_Toolbar;
         Margin = new Padding(5);
         MaximizeBox = false;
         Name = "AccountTransactionGridForm";
         StartPosition = FormStartPosition.CenterParent;
         Text = "Account Transaction Grid Form";
         ((System.ComponentModel.ISupportInitialize)dataGridView_AccountTransactions).EndInit();
+        menuStrip_Toolbar.ResumeLayout(false);
+        menuStrip_Toolbar.PerformLayout();
+        statusStrip_Status.ResumeLayout(false);
+        statusStrip_Status.PerformLayout();
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
@@ -101,4 +180,12 @@ partial class AccountTransactionGridForm
     private Button button_ExportCSV;
     private SaveFileDialog saveFileDialog_ExportCSV;
     private Button button_Delete;
+    private MenuStrip menuStrip_Toolbar;
+    private ToolStripMenuItem fileToolStripMenuItem;
+    private ToolStripMenuItem exitToolStripMenuItem;
+    private ToolStripMenuItem aboutDebtorToolStripMenuItem;
+    private ToolStripMenuItem githubToolStripMenuItem;
+    private ToolStripMenuItem webAppToolStripMenuItem;
+    private StatusStrip statusStrip_Status;
+    private ToolStripStatusLabel toolStripStatusLabel_Copyright;
 }

@@ -45,8 +45,10 @@ partial class AccountGridForm
         dataGridView_Accounts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         dataGridView_Accounts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         dataGridView_Accounts.Location = new Point(12, 12);
+        dataGridView_Accounts.MultiSelect = false;
         dataGridView_Accounts.Name = "dataGridView_Accounts";
         dataGridView_Accounts.ReadOnly = true;
+        dataGridView_Accounts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridView_Accounts.Size = new Size(1310, 587);
         dataGridView_Accounts.TabIndex = 0;
         // 

@@ -1,4 +1,5 @@
 using Debtor.Desktop.Forms;
+using System.Diagnostics;
 
 namespace Debtor.Desktop;
 
@@ -19,5 +20,15 @@ public partial class MainForm : Form
     {
         AccountTransactionGridForm accountTransactionGridForm = new();
         DialogResult result = accountTransactionGridForm.ShowDialog();
+    }
+
+    private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
+
+    private void GithubToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        //TODO: Pøidat link
     }
 }
