@@ -1,10 +1,7 @@
 ﻿using Debtor.DataAcess.Contexts;
 using Debtor.DataAcess.Entities;
 using Debtor.Web.Models.Accounts;
-using Debtor.Web.Models.Users;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Principal;
 
 namespace Debtor.Web.Controllers;
 
