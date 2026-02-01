@@ -40,6 +40,8 @@ partial class AccountTransactionGridForm
         webAppToolStripMenuItem = new ToolStripMenuItem();
         statusStrip_Status = new StatusStrip();
         toolStripStatusLabel_Copyright = new ToolStripStatusLabel();
+        button_Create = new Button();
+        button_Update = new Button();
         ((System.ComponentModel.ISupportInitialize)dataGridView_AccountTransactions).BeginInit();
         menuStrip_Toolbar.SuspendLayout();
         statusStrip_Status.SuspendLayout();
@@ -58,6 +60,7 @@ partial class AccountTransactionGridForm
         dataGridView_AccountTransactions.MultiSelect = false;
         dataGridView_AccountTransactions.Name = "dataGridView_AccountTransactions";
         dataGridView_AccountTransactions.ReadOnly = true;
+        dataGridView_AccountTransactions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridView_AccountTransactions.Size = new Size(1310, 559);
         dataGridView_AccountTransactions.TabIndex = 0;
         // 
@@ -147,12 +150,34 @@ partial class AccountTransactionGridForm
         toolStripStatusLabel_Copyright.Spring = true;
         toolStripStatusLabel_Copyright.Text = "@Vojtěch Novotný 2026";
         // 
+        // button_Create
+        // 
+        button_Create.Location = new Point(296, 592);
+        button_Create.Name = "button_Create";
+        button_Create.Size = new Size(136, 34);
+        button_Create.TabIndex = 1;
+        button_Create.Text = "Create";
+        button_Create.UseVisualStyleBackColor = true;
+        button_Create.Click += Button_Create_Click;
+        // 
+        // button_Update
+        // 
+        button_Update.Location = new Point(438, 592);
+        button_Update.Name = "button_Update";
+        button_Update.Size = new Size(136, 34);
+        button_Update.TabIndex = 1;
+        button_Update.Text = "Update";
+        button_Update.UseVisualStyleBackColor = true;
+        button_Update.Click += Button_Update_Click;
+        // 
         // AccountTransactionGridForm
         // 
         AutoScaleDimensions = new SizeF(11F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1334, 651);
         Controls.Add(statusStrip_Status);
+        Controls.Add(button_Update);
+        Controls.Add(button_Create);
         Controls.Add(button_Delete);
         Controls.Add(button_ExportCSV);
         Controls.Add(dataGridView_AccountTransactions);
@@ -188,4 +213,6 @@ partial class AccountTransactionGridForm
     private ToolStripMenuItem webAppToolStripMenuItem;
     private StatusStrip statusStrip_Status;
     private ToolStripStatusLabel toolStripStatusLabel_Copyright;
+    private Button button_Create;
+    private Button button_Update;
 }

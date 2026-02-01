@@ -59,4 +59,50 @@ public partial class AccountGridForm : Form
     {
         Application.Exit();
     }
+
+    private void Button_Create_Click(object sender, EventArgs e)
+    {
+        AccountEditForm form = new();
+        this.Hide();
+        DialogResult dialogResult = form.ShowDialog();
+        
+
+        if (dialogResult == DialogResult.Yes)
+        {
+            Account newAccount = form.CreateAccount();
+
+            MyDbContext.Accounts.Add(newAccount);
+            MyDbContext.SaveChanges();
+
+            AccountsData.Add(newAccount);
+        }
+
+        this.Show();
+    }
+
+    private void Button_Update_Click(object sender, EventArgs e)
+    {
+        if (dataGridView_Accounts.CurrentRow != null)
+        {
+            AccountEditForm form = new();
+
+            Account accountToUpdate = AccountsData[dataGridView_Accounts.CurrentRow.Index];
+
+            form.LoadDataToUpdate(accountToUpdate);
+            this.Hide();
+            DialogResult dialogResult = form.ShowDialog();
+            
+            if (dialogResult == DialogResult.Yes)
+            {
+                form.UpdateData(accountToUpdate);
+
+                MyDbContext.Accounts.Update(accountToUpdate);
+                MyDbContext.SaveChanges();
+
+                dataGridView_Accounts.Refresh();
+            }
+            this.Show();
+        }
+
+    }
 }

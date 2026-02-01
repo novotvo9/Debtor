@@ -32,6 +32,8 @@ partial class AccountGridForm
         button_ExportCSV = new Button();
         saveFileDialog_ExportCSV = new SaveFileDialog();
         button_Delete = new Button();
+        button_Create = new Button();
+        button_Update = new Button();
         ((System.ComponentModel.ISupportInitialize)dataGridView_Accounts).BeginInit();
         SuspendLayout();
         // 
@@ -78,11 +80,33 @@ partial class AccountGridForm
         button_Delete.UseVisualStyleBackColor = true;
         button_Delete.Click += Button_Delete_Click;
         // 
+        // button_Create
+        // 
+        button_Create.Location = new Point(296, 605);
+        button_Create.Name = "button_Create";
+        button_Create.Size = new Size(136, 34);
+        button_Create.TabIndex = 1;
+        button_Create.Text = "Create";
+        button_Create.UseVisualStyleBackColor = true;
+        button_Create.Click += Button_Create_Click;
+        // 
+        // button_Update
+        // 
+        button_Update.Location = new Point(438, 605);
+        button_Update.Name = "button_Update";
+        button_Update.Size = new Size(136, 34);
+        button_Update.TabIndex = 1;
+        button_Update.Text = "Update";
+        button_Update.UseVisualStyleBackColor = true;
+        button_Update.Click += Button_Update_Click;
+        // 
         // AccountGridForm
         // 
         AutoScaleDimensions = new SizeF(11F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1334, 651);
+        Controls.Add(button_Update);
+        Controls.Add(button_Create);
         Controls.Add(button_Delete);
         Controls.Add(button_ExportCSV);
         Controls.Add(dataGridView_Accounts);
@@ -103,4 +127,6 @@ partial class AccountGridForm
     private Button button_ExportCSV;
     private SaveFileDialog saveFileDialog_ExportCSV;
     private Button button_Delete;
+    private Button button_Create;
+    private Button button_Update;
 }

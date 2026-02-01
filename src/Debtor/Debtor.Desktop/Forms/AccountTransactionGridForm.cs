@@ -60,4 +60,49 @@ public partial class AccountTransactionGridForm : Form
     {
         Application.Exit();
     }
+
+    private void Button_Create_Click(object sender, EventArgs e)
+    {
+        AccountTransactionEditForm form = new();
+        this.Hide();
+        DialogResult dialogResult = form.ShowDialog();
+
+
+        if (dialogResult == DialogResult.Yes)
+        {
+            AccountTransaction newTransaction = form.CreateTransaction();
+
+            MyDbContext.AccountTransactions.Add(newTransaction);
+            MyDbContext.SaveChanges();
+
+            AccountTransactionsData.Add(newTransaction);
+        }
+
+        this.Show();
+    }
+
+    private void Button_Update_Click(object sender, EventArgs e)
+    {
+        if (dataGridView_AccountTransactions.CurrentRow != null)
+        {
+            AccountTransactionEditForm form = new();
+
+            AccountTransaction transactionToUpdate = AccountTransactionsData[dataGridView_AccountTransactions.CurrentRow.Index];
+
+            form.LoadDataToUpdate(transactionToUpdate);
+            this.Hide();
+            DialogResult dialogResult = form.ShowDialog();
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                form.UpdateData(transactionToUpdate);
+
+                MyDbContext.AccountTransactions.Update(transactionToUpdate);
+                MyDbContext.SaveChanges();
+
+                dataGridView_AccountTransactions.Refresh();
+            }
+            this.Show();
+        }
+    }
 }
