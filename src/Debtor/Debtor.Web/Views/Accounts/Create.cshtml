@@ -1,0 +1,33 @@
+﻿@using Debtor.Web.Models.Accounts
+@model AccountsCreateViewModel
+
+@{
+    ViewData["Title"] = "Account Create";
+}
+<form method="post">
+
+
+    <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name:</label>
+        <input asp-for="FullName" type="text" class="form-control" id="fullName">
+    </div>
+
+    <label for="accountType" class="form-label">Account Type:</label>
+    <select asp-for="AccountType" class="form-select" id="accountType">
+        <option selected value="debtor">Debtor</option>
+        <option value="testor">Testor</option>
+    </select>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input asp-for="Email" type="email" class="form-control" id="email">
+    </div>
+
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone:</label>
+        <input asp-for="Phone" type="tel" class="form-control" id="phone">
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-warning" type="reset">Reset</button>
+</form>

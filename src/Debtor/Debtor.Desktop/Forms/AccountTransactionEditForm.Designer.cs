@@ -113,7 +113,8 @@ partial class AccountTransactionEditForm
         // 
         numericUpDown_Amount.DecimalPlaces = 2;
         numericUpDown_Amount.Location = new Point(182, 90);
-        numericUpDown_Amount.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
+        numericUpDown_Amount.Maximum = new decimal(new int[] { -1486618625, 232830643, 0, 131072 });
+        numericUpDown_Amount.Minimum = new decimal(new int[] { -1486618625, 232830643, 0, -2147352576 });
         numericUpDown_Amount.Name = "numericUpDown_Amount";
         numericUpDown_Amount.Size = new Size(315, 33);
         numericUpDown_Amount.TabIndex = 3;

@@ -4,6 +4,10 @@
     ViewData["Title"] = "Transaction List";
 }
 
+<form method="post" asp-controller="Transactions" asp-action="Create">
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -14,6 +18,7 @@
             <th scope="col">Currency</th>
             <th scope="col">Transaction At</th>
             <th scope="col">Payment Method</th>
+            <th scope="col">Update</th>
             <th scope="col">Delete</th>
         </tr>
     </thead>
@@ -28,12 +33,19 @@
                 <td>@transaction.Currency</td>
                 <td>@transaction.TransactionAt</td>
                 <td>@transaction.PaymentMethod</td>
+                @* přidat modal *@
+                <td>
+                    <form method="post" asp-controller="Transactions" asp-action="Update" asp-route-id="@transaction.Id">
+                        <button type="submit" class="btn btn-warning">Update</button>
+                    </form>
+                </td>
+
                 <td>
                     <form method="post" asp-controller="Transactions" asp-action="Delete" asp-route-id="@transaction.Id">
 
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#deleteModal-@transaction.Id">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@transaction.Id">
                             Delete
                         </button>
 

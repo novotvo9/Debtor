@@ -4,6 +4,10 @@
     ViewData["Title"] = "Account List";
 }
 
+<form method="post" asp-controller="Accounts" asp-action="Create">
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -14,6 +18,7 @@
             <th scope="col">Phone</th>
             <th scope="col">Created At</th>
             <th scope="col">Transaction List</th>
+            <th scope="col">Update</th>
             <th scope="col">Delete</th>
         </tr>
     </thead>
@@ -28,6 +33,11 @@
                 <td>@account.Phone</td>
                 <td>@account.CreatedAt</td>
                 <td><a class="btn btn-primary" asp-controller="Accounts" asp-action="Detail" asp-route-id="@account.Id"> Detail</a></td>
+                <td>
+                    <form method="post" asp-controller="Accounts" asp-action="Update" asp-route-id="@account.Id">
+                        <button type="submit" class="btn btn-warning">Update</button>
+                    </form>
+                </td>
                 <td>
                     <form method="post" asp-controller="Accounts" asp-action="Delete" asp-route-id="@account.Id">
                         <button type="submit" class="btn btn-danger">Delete</button>

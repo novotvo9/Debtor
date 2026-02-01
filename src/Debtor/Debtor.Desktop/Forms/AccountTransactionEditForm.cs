@@ -53,8 +53,8 @@ public partial class AccountTransactionEditForm : Form
 
     public void LoadDataToUpdate(AccountTransaction transactionToUpate)
     {
-        comboBox_Accounts.SelectedItem = transactionToUpate.AccountId;
-        comboBox_Accounts.Enabled = false; //TODO: READ ONLY?
+        comboBox_Accounts.SelectedItem = transactionToUpate.AccountId.ToString();
+        comboBox_Accounts.Enabled = false;
         comboBox_TransactionTypes.SelectedItem = transactionToUpate.TransactionType;
         numericUpDown_Amount.Value = transactionToUpate.Amount;
         textBox_Currency.Text = transactionToUpate.Currency;

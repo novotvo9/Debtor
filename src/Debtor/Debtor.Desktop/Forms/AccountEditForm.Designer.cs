@@ -79,6 +79,7 @@ partial class AccountEditForm
         // textBox_Name
         // 
         textBox_Name.Location = new Point(166, 13);
+        textBox_Name.MaxLength = 120;
         textBox_Name.Name = "textBox_Name";
         textBox_Name.Size = new Size(331, 33);
         textBox_Name.TabIndex = 1;
@@ -95,6 +96,7 @@ partial class AccountEditForm
         // textBox_Email
         // 
         textBox_Email.Location = new Point(166, 91);
+        textBox_Email.MaxLength = 254;
         textBox_Email.Name = "textBox_Email";
         textBox_Email.Size = new Size(331, 33);
         textBox_Email.TabIndex = 3;
@@ -102,6 +104,7 @@ partial class AccountEditForm
         // textBox_Phone
         // 
         textBox_Phone.Location = new Point(166, 135);
+        textBox_Phone.MaxLength = 32;
         textBox_Phone.Name = "textBox_Phone";
         textBox_Phone.Size = new Size(331, 33);
         textBox_Phone.TabIndex = 4;
