@@ -2,7 +2,7 @@
 
 namespace Debtor.Web.Models.Users;
 
-public class UsersViewModel
+public class UsersLoginViewModel
 {
     public int Id { get; set; }
 

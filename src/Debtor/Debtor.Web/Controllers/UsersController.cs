@@ -10,26 +10,19 @@ namespace Debtor.Web.Controllers;
 
 public class UsersController : Controller
 {
-    public MyDbContext _myDbContext { get; set; } = new();
+    public MyDbContext MyDbContext { get; set; } = new();
 
     [HttpGet]
     public IActionResult Login()
     {
-        UsersViewModel model = new();
+        UsersLoginViewModel model = new();
         return View(model);
     }
 
-    //public UsersController()
-    //{
-    //    _myDbContext = new MyDbContext();
-    //}
-
-    // potřebuji zvlášť login a register model?
-
     [HttpPost] // musím dát do Tasku kvůli asnyc
-    public async Task<IActionResult> Login(UsersViewModel model) // TODO: přejmenovat na LoginViewModel?
+    public async Task<IActionResult> Login(UsersLoginViewModel model)
     {
-        User? user = _myDbContext.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == HashPassword(model.Password));
+        User? user = MyDbContext.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == HashPassword(model.Password));
 
         if (user == null)
         {
@@ -81,6 +74,26 @@ public class UsersController : Controller
     [HttpGet]
     public IActionResult Register()
     {
-        return View();
+        UsersRegisterViewModel model = new();
+        return View(model);
     }
+
+    [HttpPost]
+    public IActionResult Register(UsersRegisterViewModel model)
+    {
+        if (ModelState.IsValid == false)
+        {
+            return View(model);
+        }
+
+        User newUser = new();
+        newUser.Email = model.Email;
+        newUser.Password = HashPassword(model.Password);
+
+        MyDbContext.Users.Add(newUser);
+        MyDbContext.SaveChanges();
+
+        return RedirectToAction("Login");
+    }
+
 }
