@@ -44,7 +44,7 @@
                         } else
                         {
                             <li class="nav-item">
-                                <p>Ahoj uživateli: @User.FindFirst("email").Value (#@User.FindFirst("id").Value)</p>
+                                <p class="text-dark">Ahoj uživateli: @User.FindFirst("email").Value (#@User.FindFirst("id").Value)</p>
                             </li>
                             <li>
                                 <form asp-controller="Users" asp-action="Logout" method="post">
