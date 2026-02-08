@@ -11,21 +11,21 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="AccountType" class="form-label">Account Type:</label>
-        <select asp-for="AccountType" class="form-select">
+        <label for="accountType" class="form-label">Account Type:</label>
+        <select asp-for="AccountType" class="form-select" id="accountType">
             <option selected value="debtor">Debtor</option>
             <option value="testor">Testor</option>
         </select>
     </div>   
 
     <div class="mb-3">
-        <label asp-for="Email" class="form-label">Email:</label>
-        <input asp-for="Email" type="email" class="form-control">
+        <label for="email" class="form-label">Email:</label>
+        <input asp-for="Email" type="email" class="form-control" id="email">
     </div>
 
     <div class="mb-3">
-        <label asp-for="Phone" class="form-label">Phone:</label>
-        <input asp-for="Phone" type="tel" class="form-control">
+        <label for="phone" class="form-label">Phone:</label>
+        <input asp-for="Phone" type="tel" class="form-control" id="phone">
     </div>
 
     <button class="btn btn-primary" type="submit">Submit</button>
