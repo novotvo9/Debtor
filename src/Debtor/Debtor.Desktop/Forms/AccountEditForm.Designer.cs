@@ -127,6 +127,7 @@ partial class AccountEditForm
         button_Cancel.TabIndex = 5;
         button_Cancel.Text = "Cancel";
         button_Cancel.UseVisualStyleBackColor = true;
+        button_Cancel.Click += Button_Cancel_Click;
         // 
         // AccountEditForm
         // 

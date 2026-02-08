@@ -1,14 +1,84 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Debtor.DataAcess.Contexts;
+using Debtor.DataAcess.Entities;
+using Debtor.Web.Models.Users;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Debtor.Web.Controllers;
 
 public class UsersController : Controller
 {
+    public MyDbContext _myDbContext { get; set; } = new();
+
+    [HttpGet]
     public IActionResult Login()
     {
-        return View();
+        UsersViewModel model = new();
+        return View(model);
     }
 
+    //public UsersController()
+    //{
+    //    _myDbContext = new MyDbContext();
+    //}
+
+    // potřebuji zvlášť login a register model?
+
+    [HttpPost] // musím dát do Tasku kvůli asnyc
+    public async Task<IActionResult> Login(UsersViewModel model) // TODO: přejmenovat na LoginViewModel?
+    {
+        User? user = _myDbContext.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == HashPassword(model.Password));
+
+        if (user == null)
+        {
+            // lepší zmást nepřítele - neříkat, co je konkrétně špatně
+            return View(model);
+            // šel by i error message
+        }
+
+        // Claims - informace o uživateli, které chci uložit do cookie
+            // id, email, role?
+        List<Claim> claims = [];
+
+        Claim idClaim = new("id", user.Id.ToString());
+        Claim emailClaim = new("email", user.Email);
+        // TODO: Role???
+
+        claims.Add(idClaim);
+        claims.Add(emailClaim);
+
+        // teď přiřadit claimy ke cookies schématu - vytvořit identitu, může jich mít víc (github, google, microsoft...)
+        ClaimsIdentity identity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        // claims principal - může mít víc identit
+        // claimy -> claimsIdentity -> claimsPrincipal
+        ClaimsPrincipal principal = new(identity);
+
+        // v HttpContext informace o requestu a response
+        // Signin - schéma a principal
+        // async - musí přijít postupně - ne že by přišlo třeba jen GET /inde při pomalém internetu
+        //i response nazpátek - json, html, redirect... - asynchronní operace
+        // seriově paralelně -> courrently
+
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+        //HttpContext.User
+
+        return RedirectToAction("Index", "Dashboard");
+    }
+
+    // tady by to šlo implementovat realně
+    private static string HashPassword(string password) => password;
+
+    [HttpPost]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("Login", "Users");
+    }
+
+    [HttpGet]
     public IActionResult Register()
     {
         return View();

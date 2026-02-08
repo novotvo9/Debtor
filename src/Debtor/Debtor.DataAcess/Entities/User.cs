@@ -13,7 +13,7 @@ public class User
     public int Id { get; set; }
     [Column("email")]
     [DisplayName("Email")]
-    public string email { get; set; }
+    public string Email { get; set; }
     [Column("password")]
     [DisplayName("Password")]
     public string Password { get; set; }

@@ -22,7 +22,7 @@ public partial class AccountEditForm : Form
         Account newAccount = new();
 
         newAccount.Id = new Guid();
-        
+
         newAccount.FullName = textBox_Name.Text;
         newAccount.AccountType = (string)comboBox_AccountTypes.SelectedValue!;
         newAccount.Email = textBox_Email.Text;

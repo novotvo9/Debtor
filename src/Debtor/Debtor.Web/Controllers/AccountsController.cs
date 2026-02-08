@@ -77,7 +77,7 @@ public class AccountsController : Controller
         AccountsUpdateViewModel model = new();
 
         model.Id = id; // TODO: musím toto dělat? zkus odkomentovat v modelu id a created at
-        
+
         model.FullName = existingAccount.FullName;
         model.AccountType = existingAccount.AccountType;
         model.Email = existingAccount.Email;

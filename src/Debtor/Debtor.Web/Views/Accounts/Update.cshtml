@@ -5,6 +5,7 @@
     ViewData["Title"] = "Account Update";
 }
 <form method="post">
+    <input asp-for="Id" type="hidden" />
     <div class="mb-3">
         <label for="fullName" class="form-label">Full Name:</label>
         <input asp-for="FullName" type="text" class="form-control" id="fullName">
@@ -13,7 +14,7 @@
     <div class="mb-3">
         <label for="accountType" class="form-label">Account Type:</label>
         <select asp-for="AccountType" class="form-select" id="accountType">
-            <option selected value="debtor">Debtor</option>
+            <option value="debtor">Debtor</option>
             <option value="testor">Testor</option>
         </select>
     </div>   

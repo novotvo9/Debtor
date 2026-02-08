@@ -1,17 +1,20 @@
-﻿@{
+﻿@using Debtor.Web.Models.Users
+@model UsersViewModel;
+
+@{
     ViewData["Title"] = "User Login";
 }
 
 <h1>LOGIN</h1>
 
-<form>
+<form method="post">
     <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email">
+        <input type="email" class="form-control" id="email" asp-for="Email">
     </div>
     <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password">
+        <input type="password" class="form-control" id="password" asp-for="Password">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

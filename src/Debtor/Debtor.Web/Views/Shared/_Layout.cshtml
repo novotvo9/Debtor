@@ -31,12 +31,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Transactions" asp-action="All">Transactions</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Users" asp-action="Login">Login</a>
-                        </li>
-                        <li class="nav-item">
+
+                        @if(User.Identity.IsAuthenticated == false)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Login">Login</a>
+                            </li>
+                        } else
+                        {
+                            <li class="nav-item">
+                                <p>Ahoj uživateli: @User.FindFirst("email").Value (#@User.FindFirst("id").Value)</p>
+                            </li>
+                            <li>
+                                <form asp-controller="Users" asp-action="Logout" method="post">
+                                    <button class="btn btn-primary" type="submit">Odhlásit se</button>
+                                </form>
+                            </li>
+
+                        }
+
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Users" asp-action="Register">Register</a>
-                        </li>
+                        </li> *@
 
                         @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Accounts" asp-action="All">Login</a>
