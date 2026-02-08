@@ -15,6 +15,22 @@ public partial class AccountTransactionGridForm : Form
         LoadAccountTransactionData();
     }
 
+    public AccountTransactionGridForm(BindingList<AccountTransaction> data)
+    {
+        InitializeComponent();
+        LoadDetailData(data);
+    }
+
+    private void LoadDetailData(BindingList<AccountTransaction> data)
+    {
+        AccountTransactionsData = data;
+
+        dataGridView_AccountTransactions.DataSource = AccountTransactionsData;
+
+        DataGridViewColumn lastCol = dataGridView_AccountTransactions.Columns[dataGridView_AccountTransactions.Columns.Count - 1];
+        lastCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+    }
+
     private void LoadAccountTransactionData()
     {
         //List<AccountTransaction> accountTransactions = MyDbContext.AccountTransactions.Include(a => a.Account).ToList();

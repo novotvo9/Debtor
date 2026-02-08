@@ -34,6 +34,7 @@ partial class AccountGridForm
         button_Delete = new Button();
         button_Create = new Button();
         button_Update = new Button();
+        button_Detail = new Button();
         ((System.ComponentModel.ISupportInitialize)dataGridView_Accounts).BeginInit();
         SuspendLayout();
         // 
@@ -100,11 +101,22 @@ partial class AccountGridForm
         button_Update.UseVisualStyleBackColor = true;
         button_Update.Click += Button_Update_Click;
         // 
+        // button_Detail
+        // 
+        button_Detail.Location = new Point(580, 605);
+        button_Detail.Name = "button_Detail";
+        button_Detail.Size = new Size(136, 34);
+        button_Detail.TabIndex = 1;
+        button_Detail.Text = "Detail";
+        button_Detail.UseVisualStyleBackColor = true;
+        button_Detail.Click += Button_Detail_Click;
+        // 
         // AccountGridForm
         // 
         AutoScaleDimensions = new SizeF(11F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1334, 651);
+        Controls.Add(button_Detail);
         Controls.Add(button_Update);
         Controls.Add(button_Create);
         Controls.Add(button_Delete);
@@ -129,4 +141,5 @@ partial class AccountGridForm
     private Button button_Delete;
     private Button button_Create;
     private Button button_Update;
+    private Button button_Detail;
 }

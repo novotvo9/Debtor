@@ -65,7 +65,7 @@ public partial class AccountGridForm : Form
         AccountEditForm form = new();
         this.Hide();
         DialogResult dialogResult = form.ShowDialog();
-        
+
 
         if (dialogResult == DialogResult.Yes)
         {
@@ -91,7 +91,7 @@ public partial class AccountGridForm : Form
             form.LoadDataToUpdate(accountToUpdate);
             this.Hide();
             DialogResult dialogResult = form.ShowDialog();
-            
+
             if (dialogResult == DialogResult.Yes)
             {
                 form.UpdateData(accountToUpdate);
@@ -104,5 +104,17 @@ public partial class AccountGridForm : Form
             this.Show();
         }
 
+    }
+
+    private void Button_Detail_Click(object sender, EventArgs e)
+    {
+
+        if (dataGridView_Accounts.CurrentRow != null)
+        {
+            Account accountToDetail = AccountsData[dataGridView_Accounts.CurrentRow.Index];
+            List<AccountTransaction> accountDetailTransactions = MyDbContext.AccountTransactions.Where(t => t.AccountId == accountToDetail.Id).ToList();
+            AccountTransactionGridForm form = new(new BindingList<AccountTransaction>(accountDetailTransactions));
+            form.ShowDialog();
+        }
     }
 }
