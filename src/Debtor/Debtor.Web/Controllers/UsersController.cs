@@ -19,16 +19,14 @@ public class UsersController : Controller
         return View(model);
     }
 
-    [HttpPost] // musím dát do Tasku kvůli asnyc
+    [HttpPost]
     public async Task<IActionResult> Login(UsersLoginViewModel model)
     {
         User? user = MyDbContext.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == HashPassword(model.Password));
 
         if (user == null)
         {
-            // lepší zmást nepřítele - neříkat, co je konkrétně špatně
-            return View(model);
-            // šel by i error message
+            return View(model); // Error?
         }
 
         // Claims - informace o uživateli, které chci uložit do cookie
@@ -51,7 +49,7 @@ public class UsersController : Controller
         // Signin - schéma a principal
         // async - musí přijít postupně - ne že by přišlo třeba jen GET /inde při pomalém internetu
         //i response nazpátek - json, html, redirect... - asynchronní operace
-        // seriově paralelně -> courrently
+        // seriově paralelně -> concurrently
 
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
@@ -63,7 +61,6 @@ public class UsersController : Controller
         return RedirectToAction("Index", "Dashboard");
     }
 
-    // tady by to šlo implementovat realně
     private static string HashPassword(string password) => password;
 
     [HttpGet]
