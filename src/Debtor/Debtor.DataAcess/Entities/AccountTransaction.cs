@@ -33,9 +33,6 @@ public class AccountTransaction
     [Column("payment_method")]
     [DisplayName("Payment Method")]
     public string PaymentMethod { get; set; }
-
-
-    // TODO: Huh?
     /*
     [DisplayName("Account")]
     [ForeignKey(nameof(AccountId))]

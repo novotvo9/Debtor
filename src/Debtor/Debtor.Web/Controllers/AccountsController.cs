@@ -76,14 +76,14 @@ public class AccountsController : Controller
 
         AccountsUpdateViewModel model = new();
 
-        model.Id = id; // TODO: musím toto dělat? zkus odkomentovat v modelu id a created at
+        model.Id = id;
 
         model.FullName = existingAccount.FullName;
         model.AccountType = existingAccount.AccountType;
         model.Email = existingAccount.Email;
         model.Phone = existingAccount.Phone;
 
-        model.CreatedAt = existingAccount.CreatedAt; // same
+        model.CreatedAt = existingAccount.CreatedAt;
 
         return View(model);
     }

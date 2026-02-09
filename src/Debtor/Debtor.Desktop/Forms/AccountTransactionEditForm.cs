@@ -18,10 +18,10 @@ public partial class AccountTransactionEditForm : Form
     {
         TransactionTypes = ["payment", "borrow"];
         comboBox_TransactionTypes.DataSource = TransactionTypes;
+        comboBox_Accounts.Enabled = false;
 
         Accounts = MyDbContext.Accounts.ToList();
 
-        //TODO: ZLEPŠIT?
         comboBox_Accounts.DataSource = Accounts
             .Select(a => a.Id.ToString())
             .ToList();
@@ -54,7 +54,6 @@ public partial class AccountTransactionEditForm : Form
     public void LoadDataToUpdate(AccountTransaction transactionToUpate)
     {
         comboBox_Accounts.SelectedItem = transactionToUpate.AccountId.ToString();
-        comboBox_Accounts.Enabled = false;
         comboBox_TransactionTypes.SelectedItem = transactionToUpate.TransactionType;
         numericUpDown_Amount.Value = transactionToUpate.Amount;
         textBox_Currency.Text = transactionToUpate.Currency;

@@ -19,12 +19,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li> *@
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li> *@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Accounts" asp-action="All">Accounts</a>
                         </li>
@@ -32,7 +26,7 @@
                             <a class="nav-link text-dark" asp-controller="Transactions" asp-action="All">Transactions</a>
                         </li>
 
-                        @if(User.Identity.IsAuthenticated == false)
+                        @if(User.Identity?.IsAuthenticated == false)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Users" asp-action="Login">Login</a>
@@ -44,23 +38,18 @@
                         } else
                         {
                             <li class="nav-item">
-                                <p class="text-dark">Ahoj uživateli: @User.FindFirst("email").Value (#@User.FindFirst("id").Value)</p>
+                                <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
                             </li>
-                            <li>
+                            <li class="nav-item">
+                                <p class="nav-link text-dark">Uživatel: @User.FindFirst("email")!.Value (#@User.FindFirst("id")!.Value)</p>
+                            </li>
+                            <li class="nav-item">
                                 <form asp-controller="Users" asp-action="Logout" method="post">
-                                    <button class="btn btn-primary" type="submit">Odhlásit se</button>
+                                    <button class="nav-link text-dark" type="submit">Odhlásit se</button>
                                 </form>
                             </li>
 
                         }
-
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Users" asp-action="Register">Register</a>
-                        </li> *@
-
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Accounts" asp-action="All">Login</a>
-                        </li> *@
                     </ul>
                 </div>
             </div>

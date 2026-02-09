@@ -2,6 +2,7 @@
 using Debtor.DataAcess.Entities;
 using Debtor.ImportExport;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace Debtor.Desktop.Forms;
 
@@ -45,9 +46,9 @@ public partial class AccountTransactionGridForm : Form
 
     private void Button_ExportCSV_Click(object sender, EventArgs e)
     {
-        saveFileDialog_ExportCSV.FileName = $"{DateTime.Now.Year}.{DateTime.Now.Month}.{DateTime.Now.Day}-Transactions";
+        saveFileDialog_ExportCSV.FileName = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}-Transactions";
         DialogResult result = saveFileDialog_ExportCSV.ShowDialog();
-        if (result != DialogResult.Cancel || string.IsNullOrWhiteSpace(saveFileDialog_ExportCSV.FileName) == false)
+        if (result != DialogResult.Cancel)
         {
             string filePath = saveFileDialog_ExportCSV.FileName;
             Exporter.ExportTransactionsCsv(filePath, MyDbContext.AccountTransactions.ToList());
@@ -120,5 +121,10 @@ public partial class AccountTransactionGridForm : Form
             }
             this.Show();
         }
+    }
+
+    private void GithubToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Process.Start(new ProcessStartInfo("https://github.com/novotvo9/Debtor") { UseShellExecute = true });
     }
 }

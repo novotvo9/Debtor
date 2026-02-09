@@ -37,7 +37,6 @@ partial class AccountTransactionGridForm
         exitToolStripMenuItem = new ToolStripMenuItem();
         aboutDebtorToolStripMenuItem = new ToolStripMenuItem();
         githubToolStripMenuItem = new ToolStripMenuItem();
-        webAppToolStripMenuItem = new ToolStripMenuItem();
         statusStrip_Status = new StatusStrip();
         toolStripStatusLabel_Copyright = new ToolStripStatusLabel();
         button_Create = new Button();
@@ -110,13 +109,13 @@ partial class AccountTransactionGridForm
         // exitToolStripMenuItem
         // 
         exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-        exitToolStripMenuItem.Size = new Size(92, 22);
-        exitToolStripMenuItem.Text = "&Exit";
+        exitToolStripMenuItem.Size = new Size(180, 22);
+        exitToolStripMenuItem.Text = "E&xit";
         exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
         // 
         // aboutDebtorToolStripMenuItem
         // 
-        aboutDebtorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { githubToolStripMenuItem, webAppToolStripMenuItem });
+        aboutDebtorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { githubToolStripMenuItem });
         aboutDebtorToolStripMenuItem.Name = "aboutDebtorToolStripMenuItem";
         aboutDebtorToolStripMenuItem.Size = new Size(91, 20);
         aboutDebtorToolStripMenuItem.Text = "&About Debtor";
@@ -124,14 +123,9 @@ partial class AccountTransactionGridForm
         // githubToolStripMenuItem
         // 
         githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-        githubToolStripMenuItem.Size = new Size(123, 22);
+        githubToolStripMenuItem.Size = new Size(180, 22);
         githubToolStripMenuItem.Text = "&Github";
-        // 
-        // webAppToolStripMenuItem
-        // 
-        webAppToolStripMenuItem.Name = "webAppToolStripMenuItem";
-        webAppToolStripMenuItem.Size = new Size(123, 22);
-        webAppToolStripMenuItem.Text = "&Web App";
+        githubToolStripMenuItem.Click += GithubToolStripMenuItem_Click;
         // 
         // statusStrip_Status
         // 
@@ -210,7 +204,6 @@ partial class AccountTransactionGridForm
     private ToolStripMenuItem exitToolStripMenuItem;
     private ToolStripMenuItem aboutDebtorToolStripMenuItem;
     private ToolStripMenuItem githubToolStripMenuItem;
-    private ToolStripMenuItem webAppToolStripMenuItem;
     private StatusStrip statusStrip_Status;
     private ToolStripStatusLabel toolStripStatusLabel_Copyright;
     private Button button_Create;

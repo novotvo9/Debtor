@@ -29,6 +29,6 @@ public partial class MainForm : Form
 
     private void GithubToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        //TODO: Pøidat link
+        Process.Start(new ProcessStartInfo("https://github.com/novotvo9/Debtor") { UseShellExecute = true });
     }
 }

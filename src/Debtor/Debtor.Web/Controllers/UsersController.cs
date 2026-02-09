@@ -37,7 +37,6 @@ public class UsersController : Controller
 
         Claim idClaim = new("id", user.Id.ToString());
         Claim emailClaim = new("email", user.Email);
-        // TODO: Role???
 
         claims.Add(idClaim);
         claims.Add(emailClaim);
@@ -68,7 +67,7 @@ public class UsersController : Controller
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Login", "Users");
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpGet]
