@@ -2,5 +2,14 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<h1>VIDÍ JEN PŘIHLÁŠENÝ</h1>
-<p>SEM ASI DÁM DETAIL ÚČTU SE STEJNÝM MAILEM JAKO JE ÚČET, PROPOJIT? 1:N / 1:1</p>
+@if (User.FindFirst("email")!.Value == "admin@hostmaster.com")
+{
+    <h1>Admin Panel</h1>
+    <a asp-controller="Accounts" asp-action="All" class="btn btn-primary">All Accounts</a>
+    <a asp-controller="Transactions" asp-action="All" class="btn btn-primary">All Transactions</a>
+}
+else
+{
+    <h1>User Panel</h1>
+    <p>USERS TRANSACTIONS</p>
+}

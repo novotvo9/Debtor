@@ -55,7 +55,10 @@ public class UsersController : Controller
 
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-        //HttpContext.User
+        if (user.Email == "admin@hostmaster.com")
+        {
+            return RedirectToAction("Index", "Home");
+        }
 
         return RedirectToAction("Index", "Dashboard");
     }
@@ -63,7 +66,7 @@ public class UsersController : Controller
     // tady by to šlo implementovat realně
     private static string HashPassword(string password) => password;
 
-    [HttpPost]
+    [HttpGet]
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

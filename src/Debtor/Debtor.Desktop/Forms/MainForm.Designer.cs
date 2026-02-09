@@ -95,7 +95,7 @@ partial class MainForm
         // githubToolStripMenuItem
         // 
         githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-        githubToolStripMenuItem.Size = new Size(180, 22);
+        githubToolStripMenuItem.Size = new Size(110, 22);
         githubToolStripMenuItem.Text = "&Github";
         githubToolStripMenuItem.Click += GithubToolStripMenuItem_Click;
         // 
@@ -112,9 +112,9 @@ partial class MainForm
         // toolStripStatusLabel_Copyright
         // 
         toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
-        toolStripStatusLabel_Copyright.Size = new Size(581, 17);
+        toolStripStatusLabel_Copyright.Size = new Size(550, 17);
         toolStripStatusLabel_Copyright.Spring = true;
-        toolStripStatusLabel_Copyright.Text = "@Vojtěch Novotný 2026";
+        toolStripStatusLabel_Copyright.Text = "©Vojtěch Novotný 2026";
         // 
         // MainForm
         // 

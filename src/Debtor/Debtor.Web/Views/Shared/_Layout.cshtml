@@ -19,13 +19,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Accounts" asp-action="All">Accounts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Transactions" asp-action="All">Transactions</a>
-                        </li>
-
                         @if(User.Identity?.IsAuthenticated == false)
                         {
                             <li class="nav-item">
@@ -34,21 +27,17 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Users" asp-action="Register">Register</a>
                             </li>
-                            
                         } else
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <p class="nav-link text-dark">Uživatel: @User.FindFirst("email")!.Value (#@User.FindFirst("id")!.Value)</p>
+                                <p class="nav-link text-dark align-middle m-0">User: @User.FindFirst("email")!.Value - (#@User.FindFirst("id")!.Value)</p>
                             </li>
                             <li class="nav-item">
-                                <form asp-controller="Users" asp-action="Logout" method="post">
-                                    <button class="nav-link text-dark" type="submit">Odhlásit se</button>
-                                </form>
+                                <a class="nav-link text-danger" asp-controller="Users" asp-action="Logout">Odhlásit se</a>
                             </li>
-
                         }
                     </ul>
                 </div>

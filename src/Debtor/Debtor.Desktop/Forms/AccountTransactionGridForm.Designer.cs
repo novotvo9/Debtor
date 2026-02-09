@@ -109,7 +109,7 @@ partial class AccountTransactionGridForm
         // exitToolStripMenuItem
         // 
         exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-        exitToolStripMenuItem.Size = new Size(180, 22);
+        exitToolStripMenuItem.Size = new Size(92, 22);
         exitToolStripMenuItem.Text = "E&xit";
         exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
         // 
@@ -123,7 +123,7 @@ partial class AccountTransactionGridForm
         // githubToolStripMenuItem
         // 
         githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-        githubToolStripMenuItem.Size = new Size(180, 22);
+        githubToolStripMenuItem.Size = new Size(110, 22);
         githubToolStripMenuItem.Text = "&Github";
         githubToolStripMenuItem.Click += GithubToolStripMenuItem_Click;
         // 
@@ -140,9 +140,9 @@ partial class AccountTransactionGridForm
         // toolStripStatusLabel_Copyright
         // 
         toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
-        toolStripStatusLabel_Copyright.Size = new Size(1319, 17);
+        toolStripStatusLabel_Copyright.Size = new Size(1288, 17);
         toolStripStatusLabel_Copyright.Spring = true;
-        toolStripStatusLabel_Copyright.Text = "@Vojtěch Novotný 2026";
+        toolStripStatusLabel_Copyright.Text = "©Vojtěch Novotný 2026";
         // 
         // button_Create
         // 

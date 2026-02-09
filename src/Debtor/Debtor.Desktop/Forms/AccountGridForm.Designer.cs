@@ -36,8 +36,8 @@ partial class AccountGridForm
         button_Update = new Button();
         button_Detail = new Button();
         statusStrip_Status = new StatusStrip();
-        menuStrip_Menu = new MenuStrip();
         toolStripStatusLabel_Copyright = new ToolStripStatusLabel();
+        menuStrip_Menu = new MenuStrip();
         fileToolStripMenuItem = new ToolStripMenuItem();
         exitToolStripMenuItem = new ToolStripMenuItem();
         aboutDebtorToolStripMenuItem = new ToolStripMenuItem();
@@ -129,6 +129,13 @@ partial class AccountGridForm
         statusStrip_Status.TabIndex = 2;
         statusStrip_Status.Text = "statusStrip1";
         // 
+        // toolStripStatusLabel_Copyright
+        // 
+        toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
+        toolStripStatusLabel_Copyright.Size = new Size(1288, 17);
+        toolStripStatusLabel_Copyright.Spring = true;
+        toolStripStatusLabel_Copyright.Text = "©Vojtěch Novotný 2026";
+        // 
         // menuStrip_Menu
         // 
         menuStrip_Menu.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, aboutDebtorToolStripMenuItem });
@@ -137,13 +144,6 @@ partial class AccountGridForm
         menuStrip_Menu.Size = new Size(1334, 24);
         menuStrip_Menu.TabIndex = 3;
         menuStrip_Menu.Text = "menuStrip1";
-        // 
-        // toolStripStatusLabel_Copyright
-        // 
-        toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
-        toolStripStatusLabel_Copyright.Size = new Size(1288, 17);
-        toolStripStatusLabel_Copyright.Spring = true;
-        toolStripStatusLabel_Copyright.Text = "@Vojtěch Novotný 2026";
         // 
         // fileToolStripMenuItem
         // 
@@ -155,7 +155,7 @@ partial class AccountGridForm
         // exitToolStripMenuItem
         // 
         exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-        exitToolStripMenuItem.Size = new Size(180, 22);
+        exitToolStripMenuItem.Size = new Size(92, 22);
         exitToolStripMenuItem.Text = "E&xit";
         // 
         // aboutDebtorToolStripMenuItem
@@ -168,7 +168,7 @@ partial class AccountGridForm
         // githubToolStripMenuItem
         // 
         githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-        githubToolStripMenuItem.Size = new Size(180, 22);
+        githubToolStripMenuItem.Size = new Size(110, 22);
         githubToolStripMenuItem.Text = "&Github";
         githubToolStripMenuItem.Click += GithubToolStripMenuItem_Click;
         // 
