@@ -38,7 +38,6 @@ partial class AccountTransactionEditForm
         numericUpDown_Amount = new NumericUpDown();
         label_Currency = new Label();
         textBox_Currency = new TextBox();
-        mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
         groupBox1 = new GroupBox();
         radioButton_Cash = new RadioButton();
         radioButton_Bank = new RadioButton();
@@ -136,13 +135,6 @@ partial class AccountTransactionEditForm
         textBox_Currency.Size = new Size(315, 33);
         textBox_Currency.TabIndex = 4;
         // 
-        // mySqlDataAdapter1
-        // 
-        mySqlDataAdapter1.DeleteCommand = null;
-        mySqlDataAdapter1.InsertCommand = null;
-        mySqlDataAdapter1.SelectCommand = null;
-        mySqlDataAdapter1.UpdateCommand = null;
-        // 
         // groupBox1
         // 
         groupBox1.Controls.Add(radioButton_Cash);
@@ -218,7 +210,6 @@ partial class AccountTransactionEditForm
     private NumericUpDown numericUpDown_Amount;
     private Label label_Currency;
     private TextBox textBox_Currency;
-    private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
     private GroupBox groupBox1;
     private RadioButton radioButton_Cash;
     private RadioButton radioButton_Bank;

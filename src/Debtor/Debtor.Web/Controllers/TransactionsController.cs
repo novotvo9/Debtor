@@ -36,8 +36,14 @@ public class TransactionsController : Controller
         }
 
         AccountTransaction newTransaction = new();
-        // id autoset??
-        // TODO: další sety
+        // id autoset
+        newTransaction.AccountId = model.AccountId;
+        newTransaction.TransactionType = model.TransactionType;
+        newTransaction.Amount = model.Amount;
+        newTransaction.Currency = model.Currency;
+        newTransaction.PaymentMethod = model.PaymentMethod;
+
+        newTransaction.TransactionAt = DateTime.Now;
 
         MyDbContext.AccountTransactions.Add(newTransaction);
         MyDbContext.SaveChanges();
@@ -57,8 +63,14 @@ public class TransactionsController : Controller
 
         TransactionsUpdateViewModel model = new();
 
-        // id autoset??
-        // TODO: další sety
+        model.Id = id;
+
+        model.AccountId = existingTransaction.AccountId;
+        model.TransactionType = existingTransaction.TransactionType;
+        model.Amount = existingTransaction.Amount;
+        model.Currency = existingTransaction.Currency;
+        model.TransactionAt = existingTransaction.TransactionAt;
+        model.PaymentMethod = existingTransaction.PaymentMethod;
 
         return View(model);
     }
@@ -79,7 +91,10 @@ public class TransactionsController : Controller
             return View(model);
         }
 
-        // TODO: Sety
+        existingTransaction.TransactionType = model.TransactionType;
+        existingTransaction.Amount = model.Amount;
+        existingTransaction.Currency = model.Currency;
+        existingTransaction.PaymentMethod = model.PaymentMethod;
 
         MyDbContext.AccountTransactions.Update(existingTransaction);
         MyDbContext.SaveChanges();

@@ -112,7 +112,7 @@ partial class MainForm
         // toolStripStatusLabel_Copyright
         // 
         toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
-        toolStripStatusLabel_Copyright.Size = new Size(550, 17);
+        toolStripStatusLabel_Copyright.Size = new Size(581, 17);
         toolStripStatusLabel_Copyright.Spring = true;
         toolStripStatusLabel_Copyright.Text = "©Vojtěch Novotný 2026";
         // 
@@ -131,7 +131,7 @@ partial class MainForm
         Margin = new Padding(5);
         MaximizeBox = false;
         Name = "MainForm";
-        StartPosition = FormStartPosition.CenterScreen;
+        StartPosition = FormStartPosition.CenterParent;
         Text = "Debtor";
         menuStrip_Toolbar.ResumeLayout(false);
         menuStrip_Toolbar.PerformLayout();

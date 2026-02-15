@@ -1,31 +1,41 @@
-﻿@{
+﻿@using Debtor.Web.Models.Transactions
+@model TransactionsUpdateViewModel;
+
+@{
     ViewData["Title"] = "Transaction Update";
 }
 <form method="post">
-    @* TODO: inputs *@
-    @* <input asp-for="Id" type="hidden" />
+    <input asp-for="Id" type="hidden" />
+
+    @* TODO: need list of accounts *@
+    <label for="accountId" class="form-label">Account ID:</label>
+    <select asp-for="AccountId" class="form-select" id="accountId">
+        <option selected value="placeholder">placeholder</option>
+    </select>
+
+    <label for="transactionType" class="form-label">Transation Type:</label>
+    <select asp-for="TransactionType" class="form-select" id="transactionType">
+        <option selected value="payment">payment</option>
+        <option value="borrow">borrow</option>
+    </select>
+
     <div class="mb-3">
-        <label for="fullName" class="form-label">Full Name:</label>
-        <input asp-for="FullName" type="text" class="form-control" id="fullName">
+        <label for="amount" class="form-label">Ammount:</label>
+        <input asp-for="Amount" type="number" class="form-control" id="amount" min="-9999999999999999.99" max="9999999999999999.99">
+        @* min?? max?? *@s
     </div>
 
     <div class="mb-3">
-        <label for="accountType" class="form-label">Account Type:</label>
-        <select asp-for="AccountType" class="form-select" id="accountType">
-            <option value="debtor">Debtor</option>
-            <option value="testor">Testor</option>
-        </select>
+        <label for="currency" class="form-label">Currency:</label>
+        <input asp-for="Currency" type="text" class="form-control" id="currency" maxlength="3" minlength="3">
+        @* minlength? *@
     </div>
 
-    <div class="mb-3">
-        <label for="email" class="form-label">Email:</label>
-        <input asp-for="Email" type="email" class="form-control" id="email">
-    </div>
-
-    <div class="mb-3">
-        <label for="phone" class="form-label">Phone:</label>
-        <input asp-for="Phone" type="tel" class="form-control" id="phone">
-    </div> *@
+    <label for="paymentMethod" class="form-label">Payment Method:</label>
+    <select asp-for="PaymentMethod" class="form-select" id="paymentMethod">
+        <option selected value="bank">bank</option>
+        <option value="cash">cash</option>
+    </select>
 
     <button class="btn btn-primary" type="submit">Submit</button>
     <button class="btn btn-warning" type="reset">Reset</button>

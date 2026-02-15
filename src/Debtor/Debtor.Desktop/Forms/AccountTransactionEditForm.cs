@@ -18,7 +18,7 @@ public partial class AccountTransactionEditForm : Form
     {
         TransactionTypes = ["payment", "borrow"];
         comboBox_TransactionTypes.DataSource = TransactionTypes;
-        comboBox_Accounts.Enabled = false;
+        //comboBox_Accounts.Enabled = false; TODO: disable only on update or create separet form
 
         Accounts = MyDbContext.Accounts.ToList();
 
@@ -31,7 +31,6 @@ public partial class AccountTransactionEditForm : Form
     {
         AccountTransaction newTransaction = new();
 
-        // PRASÁRNA
         newTransaction.AccountId = Guid.Parse(comboBox_Accounts.SelectedValue!.ToString()!);
         newTransaction.TransactionType = (string)comboBox_TransactionTypes.SelectedValue!;
         newTransaction.Amount = numericUpDown_Amount.Value;

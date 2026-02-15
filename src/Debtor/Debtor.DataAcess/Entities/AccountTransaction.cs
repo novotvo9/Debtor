@@ -10,7 +10,7 @@ public class AccountTransaction
     [Key]
     [Column("transaction_id")]
     [DisplayName("ID")]
-    public int Id { get; set; }
+    public int Id { get; private set; }
     [Column("account_id")]
     [DisplayName("Account ID")]
     public Guid AccountId { get; set; }

@@ -4,7 +4,7 @@ namespace Debtor.Web.Models.Accounts;
 
 public class AccountsCreateViewModel
 {
-    public Guid Id { get; set; } // autoset
+    public Guid Id { get; set; }
     [MaxLength(120, ErrorMessage = "Too long!")]
     [Required]
     public string FullName { get; set; }
@@ -16,7 +16,8 @@ public class AccountsCreateViewModel
     public string Email { get; set; }
     [MaxLength(32, ErrorMessage = "Too long!")]
     [Required]
-    public string Phone { get; set; } // autoset
+    public string Phone { get; set; }
+    [Required]
     public DateTime CreatedAt { get; set; }
 
 }
