@@ -23,6 +23,7 @@ public class TransactionsController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        ViewBag.Accounts = MyDbContext.Accounts.ToList();
         TransactionsCreateViewModel model = new();
         return View(model);
     }
@@ -32,6 +33,7 @@ public class TransactionsController : Controller
     {
         if (ModelState.IsValid == false)
         {
+            ViewBag.Accounts = MyDbContext.Accounts.ToList();
             return View(model);
         }
 
@@ -61,6 +63,7 @@ public class TransactionsController : Controller
             return RedirectToAction(nameof(All));
         }
 
+        ViewBag.Accounts = MyDbContext.Accounts.ToList();
         TransactionsUpdateViewModel model = new();
 
         model.Id = id;
@@ -78,7 +81,6 @@ public class TransactionsController : Controller
     [HttpPost]
     public IActionResult Update(int id, TransactionsUpdateViewModel model)
     {
-        // Opakuje se??
         AccountTransaction? existingTransaction = MyDbContext.AccountTransactions.FirstOrDefault(t => t.Id == id);
         
         if (existingTransaction == null)
@@ -88,9 +90,11 @@ public class TransactionsController : Controller
 
         if (ModelState.IsValid == false)
         {
+            ViewBag.Accounts = MyDbContext.Accounts.ToList();
             return View(model);
         }
 
+        existingTransaction.AccountId = model.AccountId;
         existingTransaction.TransactionType = model.TransactionType;
         existingTransaction.Amount = model.Amount;
         existingTransaction.Currency = model.Currency;

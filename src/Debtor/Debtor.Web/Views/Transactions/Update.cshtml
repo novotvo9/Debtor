@@ -6,11 +6,19 @@
 }
 <form method="post">
     <input asp-for="Id" type="hidden" />
+    <input type="hidden" asp-for="AccountId" />
 
-    @* TODO: need list of accounts *@
     <label for="accountId" class="form-label">Account ID:</label>
-    <select asp-for="AccountId" class="form-select" id="accountId">
-        <option selected value="placeholder">placeholder</option>
+    <select asp-for="AccountId" class="form-select" id="accountId" disabled>
+        @foreach (Account account in ViewBag.Accounts)
+        {
+            if (account.Id == Model.AccountId)
+            {
+                <option value="@account.Id" selected disabled>
+                    @account.FullName
+                </option>
+            }
+        }
     </select>
 
     <label for="transactionType" class="form-label">Transation Type:</label>

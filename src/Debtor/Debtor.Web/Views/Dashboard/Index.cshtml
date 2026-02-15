@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Account?
+
+@{
     ViewData["Title"] = "Dashboard";
 }
 
@@ -11,5 +13,39 @@
 else
 {
     <h1>User Panel</h1>
-    <p>USERS TRANSACTIONS</p>
+    <p>ID: @Model.Id</p>
+    <p>Full Name: @Model.FullName</p>
+    <p>Account Type: @Model.AccountType</p>
+    <p>Email: @Model.Email</p>
+    <p>Phone: @Model.Phone</p>
+    <p>Created At: @Model.CreatedAt</p>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Account ID</th>
+                <th scope="col">Transaction Type</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Currency</th>
+                <th scope="col">Transaction At</th>
+                <th scope="col">Payment Method</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (AccountTransaction transaction in ViewBag.AccountTransactions)
+        {
+                <tr>
+                    <td scope="row">@transaction.Id</td>
+                    <td>@transaction.AccountId</td>
+                    <td>@transaction.TransactionType</td>
+                    <td>@transaction.Amount</td>
+                    <td>@transaction.Currency</td>
+                    <td>@transaction.TransactionAt</td>
+                    <td>@transaction.PaymentMethod</td>
+                </tr>
+        }
+        </tbody>
+    </table>
+    <a class="btn btn-primary" asp-controller="Transactions" asp-action="Create">Create</a>
 }

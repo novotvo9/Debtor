@@ -6,11 +6,16 @@
 }
 
 <form method="post">
-    @* TODO: need list of accounts *@
     <label for="accountId" class="form-label">Account ID:</label>
     <select asp-for="AccountId" class="form-select" id="accountId">
-        <option selected value="placeholder">placeholder</option>
+        @foreach (Account account in ViewBag.Accounts)
+        {
+            <option value="@account.Id">
+                @account.Id
+            </option>
+        }
     </select>
+
 
     <label for="transactionType" class="form-label">Transation Type:</label>
     <select asp-for="TransactionType" class="form-select" id="transactionType">
