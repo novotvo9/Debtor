@@ -27,15 +27,13 @@
     </select>
 
     <div class="mb-3">
-        <label for="amount" class="form-label">Ammount:</label>
+        <label for="amount" class="form-label">Amount:</label>
         <input asp-for="Amount" type="number" class="form-control" id="amount" min="-9999999999999999.99" max="9999999999999999.99">
-        @* min?? max?? *@s
     </div>
 
     <div class="mb-3">
         <label for="currency" class="form-label">Currency:</label>
-        <input asp-for="Currency" type="text" class="form-control" id="currency" maxlength="3" minlength="3">
-        @* minlength? *@
+        <input asp-for="Currency" type="text" class="form-control" id="currency" maxlength="3">
     </div>
 
     <label for="paymentMethod" class="form-label">Payment Method:</label>

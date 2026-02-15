@@ -31,7 +31,6 @@ partial class LoginForm
         label_Email = new Label();
         label_Password = new Label();
         textBox_Email = new TextBox();
-        mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
         textBox_Password = new TextBox();
         button_Login = new Button();
         button_Cancel = new Button();
@@ -61,13 +60,6 @@ partial class LoginForm
         textBox_Email.Name = "textBox_Email";
         textBox_Email.Size = new Size(289, 33);
         textBox_Email.TabIndex = 2;
-        // 
-        // mySqlDataAdapter1
-        // 
-        mySqlDataAdapter1.DeleteCommand = null;
-        mySqlDataAdapter1.InsertCommand = null;
-        mySqlDataAdapter1.SelectCommand = null;
-        mySqlDataAdapter1.UpdateCommand = null;
         // 
         // textBox_Password
         // 
@@ -124,7 +116,6 @@ partial class LoginForm
     private Label label_Email;
     private Label label_Password;
     private TextBox textBox_Email;
-    private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
     private TextBox textBox_Password;
     private Button button_Login;
     private Button button_Cancel;
