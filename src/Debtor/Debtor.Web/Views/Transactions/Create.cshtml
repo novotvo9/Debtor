@@ -6,14 +6,6 @@
 }
 
 <form method="post">
-
-    @* newTransaction.AccountId = model.AccountId;
-    newTransaction.TransactionType = model.TransactionType;
-    newTransaction.Amount = model.Amount;
-    newTransaction.Currency = model.Currency;
-    newTransaction.PaymentMethod = model.PaymentMethod; *@
-
-
     @* TODO: need list of accounts *@
     <label for="accountId" class="form-label">Account ID:</label>
     <select asp-for="AccountId" class="form-select" id="accountId">
