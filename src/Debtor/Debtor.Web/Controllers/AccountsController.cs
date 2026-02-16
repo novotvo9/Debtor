@@ -69,13 +69,10 @@ public class AccountsController : Controller
 
                 return RedirectToAction(nameof(Detail), new { id = newAccount.Id });
             }
-            else
-            {
-                return RedirectToAction("Index", "Dashboard");
-            }
         }
+        return RedirectToAction("Index", "Dashboard");
 
-        
+
     }
 
     [HttpGet]
