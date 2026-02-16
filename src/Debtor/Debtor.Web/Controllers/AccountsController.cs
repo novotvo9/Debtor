@@ -2,7 +2,6 @@
 using Debtor.DataAcess.Entities;
 using Debtor.Web.Models.Accounts;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Principal;
 
 namespace Debtor.Web.Controllers;
 
