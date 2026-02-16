@@ -1,3 +1,4 @@
+using Debtor.DataAcess.Entities;
 using Debtor.Desktop.Forms;
 using System.Diagnostics;
 
@@ -5,20 +6,22 @@ namespace Debtor.Desktop;
 
 public partial class MainForm : Form
 {
-    public MainForm()
+    public User LoggedUser { get; set; }
+    public MainForm(User loggedUser)
     {
         InitializeComponent();
+        LoggedUser = loggedUser;
     }
 
     private void Button_Accounts_Click(object sender, EventArgs e)
     {
-        AccountGridForm accountGridForm = new();
+        AccountGridForm accountGridForm = new(LoggedUser);
         DialogResult result = accountGridForm.ShowDialog();
     }
 
     private void Button_AccountTransactions_Click(object sender, EventArgs e)
     {
-        AccountTransactionGridForm accountTransactionGridForm = new();
+        AccountTransactionGridForm accountTransactionGridForm = new(LoggedUser);
         DialogResult result = accountTransactionGridForm.ShowDialog();
     }
 

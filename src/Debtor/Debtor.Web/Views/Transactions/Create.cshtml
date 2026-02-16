@@ -8,7 +8,7 @@
 <form method="post">
     <label for="accountId" class="form-label">Account ID:</label>
     <select asp-for="AccountId" class="form-select" id="accountId">
-        @foreach (Account account in ViewBag.Accounts)
+        @foreach (Account account in Model.Accounts)
         {
             <option value="@account.Id">
                 @account.Id

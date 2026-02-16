@@ -10,12 +10,12 @@
 
     <label for="accountId" class="form-label">Account ID:</label>
     <select asp-for="AccountId" class="form-select" id="accountId" disabled>
-        @foreach (Account account in ViewBag.Accounts)
+        @foreach (Account account in Model.Accounts)
         {
             if (account.Id == Model.AccountId)
             {
-                <option value="@account.Id" selected disabled>
-                    @account.FullName
+                <option value="@account.Id" disabled>
+                    @account.Id
                 </option>
             }
         }

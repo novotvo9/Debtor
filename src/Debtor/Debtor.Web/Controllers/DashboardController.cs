@@ -1,5 +1,6 @@
 ﻿using Debtor.DataAcess.Contexts;
 using Debtor.DataAcess.Entities;
+using Debtor.Web.Models.Dashboard;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -16,15 +17,30 @@ public class DashboardController : Controller
     public IActionResult Index()
     {
         //int id = Convert.ToInt32(HttpContext.User.FindFirstValue("id"));
-        Account account = MyDbContext.Accounts.FirstOrDefault(a => a.Email == HttpContext.User.FindFirstValue("email"))!;
-
         if (HttpContext.User.FindFirstValue("email") == "admin@hostmaster.com")
         {
-            ViewBag.AccountTransactions = "";
-            return View();
+            return View(new DashboardIndexViewModel());
         }
-        ViewBag.AccountTransactions = MyDbContext.AccountTransactions.Where(t => t.AccountId == account.Id).ToList();
-        return View(account);
+
+        Account account = MyDbContext.Accounts.FirstOrDefault(a => a.Email == HttpContext.User.FindFirstValue("email"))!;
+        DashboardIndexViewModel model = new();
+
+        model.Account = account;
+        if (MyDbContext.AccountTransactions.Where(t => t.AccountId == account.Id).ToList() != null)
+        {
+            model.Transactions = MyDbContext.AccountTransactions.Where(t => t.AccountId == account.Id).ToList();
+        }
+        
+        if (model.Transactions.Count == 0)
+        {
+            model.Balance = 0;
+        }
+        else
+        {
+            model.Balance = model.Transactions.Sum(t => t.Amount);
+        }
+
+        return View(model);
         
     }
 

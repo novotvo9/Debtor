@@ -1,4 +1,5 @@
-﻿@model Account?
+﻿@using Debtor.Web.Models.Dashboard
+@model DashboardIndexViewModel
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -13,12 +14,12 @@
 else
 {
     <h1>User Panel</h1>
-    <p>ID: @Model!.Id</p>
-    <p>Full Name: @Model.FullName</p>
-    <p>Account Type: @Model.AccountType</p>
-    <p>Email: @Model.Email</p>
-    <p>Phone: @Model.Phone</p>
-    <p>Created At: @Model.CreatedAt</p>
+    <p>ID: @Model.Account.Id</p>
+    <p>Full Name: @Model.Account.FullName</p>
+    <p>Account Type: @Model.Account.AccountType</p>
+    <p>Email: @Model.Account.Email</p>
+    <p>Phone: @Model.Account.Phone</p>
+    <p>Created At: @Model.Account.CreatedAt</p>
 
     <table class="table table-striped table-bordered table-hover">
         <thead>
@@ -33,7 +34,7 @@ else
             </tr>
         </thead>
         <tbody>
-        @foreach (AccountTransaction transaction in ViewBag.AccountTransactions)
+        @foreach (AccountTransaction transaction in Model.Transactions)
         {
                 <tr>
                     <td scope="row">@transaction.Id</td>
@@ -47,5 +48,6 @@ else
         }
         </tbody>
     </table>
+    <p>Balance: @Model.Balance</p>
     <a class="btn btn-primary" asp-controller="Transactions" asp-action="Create">Create</a>
 }

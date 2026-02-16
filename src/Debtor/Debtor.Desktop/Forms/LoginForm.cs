@@ -21,28 +21,17 @@ public partial class LoginForm : Form
 
     private void Button_Login_Click(object sender, EventArgs e)
     {
-        string email = textBox_Email.Text;
-        string password = HashPassword(textBox_Password.Text);
+        User userToCheck = new();
+        userToCheck.Email = textBox_Email.Text;
+        userToCheck.Password = HashPassword(textBox_Password.Text);
 
         foreach (var user in Users)
         {
-            if (email == user.Email && password == user.Password)
+            if (userToCheck.Email == user.Email && userToCheck.Password == user.Password)
             {
-                if (email == "admin@hostmaster.com" && password == "admin")
-                {
-                    MessageBox.Show("ADMIN");
-                    this.Hide();
-                    MainForm form = new();
-                    form.ShowDialog();
-                }
-                else
-                {
-                    // TODO: Change Logic
-                    MessageBox.Show("REGULAR USER, OPENING ADMIN PANEL FOR NOW");
-                    this.Hide();
-                    MainForm form = new();
-                    form.ShowDialog();
-                }
+                this.Hide();
+                MainForm form = new(userToCheck);
+                form.ShowDialog();
             }
         }      
     }

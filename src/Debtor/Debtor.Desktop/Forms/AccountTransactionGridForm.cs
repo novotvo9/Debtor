@@ -10,16 +10,29 @@ public partial class AccountTransactionGridForm : Form
 {
     public BindingList<AccountTransaction> AccountTransactionsData { get; set; } = [];
     public MyDbContext MyDbContext { get; set; } = new();
-    public AccountTransactionGridForm()
+    public User LoggedUser { get; set; }
+    public AccountTransactionGridForm(User loggedUser)
     {
         InitializeComponent();
+        LoggedUser = loggedUser;
         LoadAccountTransactionData();
+        if (LoggedUser.Email != "admin@hostmaster.com")
+        {
+            button_Delete.Enabled = false;
+            button_Update.Enabled = false;
+        }
     }
 
-    public AccountTransactionGridForm(BindingList<AccountTransaction> data)
+    public AccountTransactionGridForm(BindingList<AccountTransaction> data, User loggedUser)
     {
         InitializeComponent();
+        LoggedUser = loggedUser;
         LoadDetailData(data);
+        if (LoggedUser.Email != "admin@hostmaster.com")
+        {
+            button_Delete.Enabled = false;
+            button_Update.Enabled = false;
+        }
     }
 
     private void LoadDetailData(BindingList<AccountTransaction> data)

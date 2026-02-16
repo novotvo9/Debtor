@@ -10,9 +10,11 @@ public partial class AccountGridForm : Form
 {
     public BindingList<Account> AccountsData { get; set; } = [];
     public MyDbContext MyDbContext { get; set; } = new();
-    public AccountGridForm()
+    public User LoggedUser { get; set; }
+    public AccountGridForm(User loggedUser)
     {
         InitializeComponent();
+        LoggedUser = loggedUser;
         LoadAccountData();
     }
 
@@ -25,6 +27,15 @@ public partial class AccountGridForm : Form
 
         DataGridViewColumn lastCol = dataGridView_Accounts.Columns[dataGridView_Accounts.Columns.Count - 1];
         lastCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+        if (LoggedUser.Email != "admin@hostmaster.com")
+        {
+            button_Delete.Enabled = false;
+            button_Update.Enabled = false;
+            button_Detail.Enabled = false;
+
+            dataGridView_Accounts.DataSource = AccountsData = new BindingList<Account>(accounts.Where(a => a.Email == LoggedUser.Email).ToList());
+        }
     }
 
     private void Button_ExportCSV_Click(object sender, EventArgs e)
@@ -119,7 +130,7 @@ public partial class AccountGridForm : Form
         {
             Account accountToDetail = AccountsData[dataGridView_Accounts.CurrentRow.Index];
             List<AccountTransaction> accountDetailTransactions = MyDbContext.AccountTransactions.Where(t => t.AccountId == accountToDetail.Id).ToList();
-            AccountTransactionGridForm form = new(new BindingList<AccountTransaction>(accountDetailTransactions));
+            AccountTransactionGridForm form = new(new BindingList<AccountTransaction>(accountDetailTransactions), LoggedUser);
             form.ShowDialog();
         }
     }

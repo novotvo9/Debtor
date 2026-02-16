@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Debtor.DataAcess.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Debtor.Web.Models.Transactions;
 
@@ -21,4 +22,5 @@ public class TransactionsCreateViewModel
     [MaxLength(16, ErrorMessage = "Too long!")]
     [Required]
     public string PaymentMethod { get; set; }
+    public List<Account>? Accounts { get; set; } = [];
 }

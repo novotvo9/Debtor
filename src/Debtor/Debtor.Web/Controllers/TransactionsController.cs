@@ -24,8 +24,8 @@ public class TransactionsController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        ViewBag.Accounts = MyDbContext.Accounts.ToList();
         TransactionsCreateViewModel model = new();
+        model.Accounts = MyDbContext.Accounts.ToList();
         return View(model);
     }
 
@@ -34,7 +34,6 @@ public class TransactionsController : Controller
     {
         if (ModelState.IsValid == false)
         {
-            ViewBag.Accounts = MyDbContext.Accounts.ToList();
             return View(model);
         }
 
@@ -67,7 +66,6 @@ public class TransactionsController : Controller
             return RedirectToAction(nameof(All));
         }
 
-        ViewBag.Accounts = MyDbContext.Accounts.ToList();
         TransactionsUpdateViewModel model = new();
 
         model.Id = id;
@@ -78,6 +76,8 @@ public class TransactionsController : Controller
         model.Currency = existingTransaction.Currency;
         model.TransactionAt = existingTransaction.TransactionAt;
         model.PaymentMethod = existingTransaction.PaymentMethod;
+
+        model.Accounts = MyDbContext.Accounts.ToList();
 
         return View(model);
     }
@@ -94,7 +94,6 @@ public class TransactionsController : Controller
 
         if (ModelState.IsValid == false)
         {
-            ViewBag.Accounts = MyDbContext.Accounts.ToList();
             return View(model);
         }
 
