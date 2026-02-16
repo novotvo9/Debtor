@@ -72,10 +72,16 @@ public partial class AccountGridForm : Form
         {
             Account newAccount = form.CreateAccount();
 
-            MyDbContext.Accounts.Add(newAccount);
-            MyDbContext.SaveChanges();
+            foreach (var account in MyDbContext.Accounts.ToList())
+            {
+                if (newAccount.Email != account.Email)
+                {
+                    MyDbContext.Accounts.Add(newAccount);
+                    MyDbContext.SaveChanges();
 
-            AccountsData.Add(newAccount);
+                    AccountsData.Add(newAccount);
+                }
+            }
         }
 
         this.Show();

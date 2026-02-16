@@ -2,6 +2,7 @@
 using Debtor.DataAcess.Entities;
 using Debtor.Web.Models.Accounts;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Principal;
 
 namespace Debtor.Web.Controllers;
 
@@ -49,20 +50,32 @@ public class AccountsController : Controller
             return View(model);
         }
 
-        Account newAccount = new();
-        newAccount.Id = Guid.NewGuid();
+        foreach (var account in MyDbContext.Accounts.ToList())
+        {
+            if (model.Email != account.Email)
+            {
+                Account newAccount = new();
+                newAccount.Id = Guid.NewGuid();
 
-        newAccount.FullName = model.FullName;
-        newAccount.AccountType = model.AccountType;
-        newAccount.Email = model.Email;
-        newAccount.Phone = model.Phone;
+                newAccount.FullName = model.FullName;
+                newAccount.AccountType = model.AccountType;
+                newAccount.Email = model.Email;
+                newAccount.Phone = model.Phone;
 
-        newAccount.CreatedAt = DateTime.Now;
+                newAccount.CreatedAt = DateTime.Now;
 
-        MyDbContext.Accounts.Add(newAccount);
-        MyDbContext.SaveChanges();
+                MyDbContext.Accounts.Add(newAccount);
+                MyDbContext.SaveChanges();
 
-        return RedirectToAction(nameof(Detail), new { id = newAccount.Id });
+                return RedirectToAction(nameof(Detail), new { id = newAccount.Id });
+            }
+            else
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+        }
+
+        
     }
 
     [HttpGet]

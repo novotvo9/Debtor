@@ -2,6 +2,7 @@
 using Debtor.DataAcess.Entities;
 using Debtor.Web.Models.Transactions;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Debtor.Web.Controllers;
 
@@ -38,7 +39,6 @@ public class TransactionsController : Controller
         }
 
         AccountTransaction newTransaction = new();
-        // id autoset
         newTransaction.AccountId = model.AccountId;
         newTransaction.TransactionType = model.TransactionType;
         newTransaction.Amount = model.Amount;
@@ -50,7 +50,11 @@ public class TransactionsController : Controller
         MyDbContext.AccountTransactions.Add(newTransaction);
         MyDbContext.SaveChanges();
 
-        return RedirectToAction(nameof(All)); // TODO: Spíš detail s route value???
+        if (HttpContext.User.FindFirstValue("email") == "admin@hostmaster.com")
+        {
+            return RedirectToAction(nameof(All));
+        }
+        return RedirectToAction("Index", "Dashboard");
     }
 
     [HttpGet]

@@ -95,4 +95,10 @@ public class UsersController : Controller
         return RedirectToAction("Login");
     }
 
+    [HttpGet]
+    public IActionResult All()
+    {
+        return View();
+    }
+
 }
