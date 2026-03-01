@@ -11,6 +11,18 @@ namespace Debtor.Web.Controllers;
 public class UsersController : Controller
 {
     public MyDbContext MyDbContext { get; set; } = new();
+    public List<User> Users { get; set; } = [];
+
+    public UsersController()
+    {
+        Users = MyDbContext.Users.ToList();
+    }
+
+    [HttpGet]
+    public IActionResult All()
+    {
+        return View(Users);
+    }
 
     [HttpGet]
     public IActionResult Login()
@@ -94,11 +106,4 @@ public class UsersController : Controller
 
         return RedirectToAction("Login");
     }
-
-    [HttpGet]
-    public IActionResult All()
-    {
-        return View();
-    }
-
 }

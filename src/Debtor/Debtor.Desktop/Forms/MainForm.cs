@@ -11,6 +11,10 @@ public partial class MainForm : Form
     {
         InitializeComponent();
         LoggedUser = loggedUser;
+        if (LoggedUser.Email != "admin@hostmaster.com")
+        {
+            button_Users.Enabled = false;
+        }
     }
 
     private void Button_Accounts_Click(object sender, EventArgs e)
@@ -33,5 +37,11 @@ public partial class MainForm : Form
     private void GithubToolStripMenuItem_Click(object sender, EventArgs e)
     {
         Process.Start(new ProcessStartInfo("https://github.com/novotvo9/Debtor") { UseShellExecute = true });
+    }
+
+    private void Button_Users_Click(object sender, EventArgs e)
+    {
+        UserGridForm form = new();
+        DialogResult result = form.ShowDialog();
     }
 }

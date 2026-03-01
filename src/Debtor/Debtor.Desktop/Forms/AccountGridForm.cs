@@ -34,7 +34,7 @@ public partial class AccountGridForm : Form
             button_Update.Enabled = false;
             button_Detail.Enabled = false;
 
-            dataGridView_Accounts.DataSource = AccountsData = new BindingList<Account>(accounts.Where(a => a.Email == LoggedUser.Email).ToList());
+            dataGridView_Accounts.DataSource = new BindingList<Account>(accounts.Where(a => a.Email == LoggedUser.Email).ToList());
         }
     }
 

@@ -132,7 +132,7 @@ partial class AccountGridForm
         // toolStripStatusLabel_Copyright
         // 
         toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
-        toolStripStatusLabel_Copyright.Size = new Size(1288, 17);
+        toolStripStatusLabel_Copyright.Size = new Size(1319, 17);
         toolStripStatusLabel_Copyright.Spring = true;
         toolStripStatusLabel_Copyright.Text = "©Vojtěch Novotný 2026";
         // 

@@ -1,0 +1,25 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (User user in Model)
+        {
+            <tr>
+                <td scope="row">@user.Id</td>
+                <td>@user.Email</td>
+                <td>@user.Password</td>
+            </tr>
+        }
+    </tbody>
+</table>

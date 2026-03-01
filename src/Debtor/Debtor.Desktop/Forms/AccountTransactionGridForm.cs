@@ -16,18 +16,13 @@ public partial class AccountTransactionGridForm : Form
         InitializeComponent();
         LoggedUser = loggedUser;
         LoadAccountTransactionData();
-        if (LoggedUser.Email != "admin@hostmaster.com")
-        {
-            button_Delete.Enabled = false;
-            button_Update.Enabled = false;
-        }
     }
 
-    public AccountTransactionGridForm(BindingList<AccountTransaction> data, User loggedUser)
+    public AccountTransactionGridForm(BindingList<AccountTransaction> transactions, User loggedUser)
     {
         InitializeComponent();
         LoggedUser = loggedUser;
-        LoadDetailData(data);
+        LoadDetailData(transactions);
         if (LoggedUser.Email != "admin@hostmaster.com")
         {
             button_Delete.Enabled = false;
@@ -35,9 +30,9 @@ public partial class AccountTransactionGridForm : Form
         }
     }
 
-    private void LoadDetailData(BindingList<AccountTransaction> data)
+    private void LoadDetailData(BindingList<AccountTransaction> transactions)
     {
-        AccountTransactionsData = data;
+        AccountTransactionsData = transactions;
 
         dataGridView_AccountTransactions.DataSource = AccountTransactionsData;
 
@@ -55,6 +50,15 @@ public partial class AccountTransactionGridForm : Form
 
         DataGridViewColumn lastCol = dataGridView_AccountTransactions.Columns[dataGridView_AccountTransactions.Columns.Count - 1];
         lastCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        if (LoggedUser.Email != "admin@hostmaster.com")
+        {
+            button_Delete.Enabled = false;
+            button_Update.Enabled = false;
+
+            List<Account> accounts = MyDbContext.Accounts.ToList();
+            Account loggedAccount = accounts.FirstOrDefault(a => a.Email == LoggedUser.Email)!;
+            dataGridView_AccountTransactions.DataSource = new BindingList<AccountTransaction>(accountTransactions.Where(t => t.AccountId == loggedAccount.Id).ToList());
+        }
     }
 
     private void Button_ExportCSV_Click(object sender, EventArgs e)

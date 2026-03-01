@@ -1,14 +1,14 @@
-﻿namespace Debtor.Desktop;
+﻿namespace Debtor.Desktop.Forms;
 
-partial class MainForm
+partial class UserGridForm
 {
     /// <summary>
-    ///  Required designer variable.
+    /// Required designer variable.
     /// </summary>
     private System.ComponentModel.IContainer components = null;
 
     /// <summary>
-    ///  Clean up any resources being used.
+    /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
@@ -23,54 +23,32 @@ partial class MainForm
     #region Windows Form Designer generated code
 
     /// <summary>
-    ///  Required method for Designer support - do not modify
-    ///  the contents of this method with the code editor.
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent()
     {
-        button_Accounts = new Button();
-        button_AccountTransactions = new Button();
-        menuStrip_Toolbar = new MenuStrip();
+        menuStrip_Menu = new MenuStrip();
         fileToolStripMenuItem = new ToolStripMenuItem();
         exitToolStripMenuItem = new ToolStripMenuItem();
         aboutDebtorToolStripMenuItem = new ToolStripMenuItem();
         githubToolStripMenuItem = new ToolStripMenuItem();
         statusStrip_Status = new StatusStrip();
         toolStripStatusLabel_Copyright = new ToolStripStatusLabel();
-        button_Users = new Button();
-        menuStrip_Toolbar.SuspendLayout();
+        dataGridView_Users = new DataGridView();
+        menuStrip_Menu.SuspendLayout();
         statusStrip_Status.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)dataGridView_Users).BeginInit();
         SuspendLayout();
         // 
-        // button_Accounts
+        // menuStrip_Menu
         // 
-        button_Accounts.Location = new Point(12, 27);
-        button_Accounts.Name = "button_Accounts";
-        button_Accounts.Size = new Size(280, 294);
-        button_Accounts.TabIndex = 0;
-        button_Accounts.Text = "Accounts";
-        button_Accounts.UseVisualStyleBackColor = true;
-        button_Accounts.Click += Button_Accounts_Click;
-        // 
-        // button_AccountTransactions
-        // 
-        button_AccountTransactions.Location = new Point(304, 27);
-        button_AccountTransactions.Name = "button_AccountTransactions";
-        button_AccountTransactions.Size = new Size(280, 294);
-        button_AccountTransactions.TabIndex = 0;
-        button_AccountTransactions.Text = "Account Transactions";
-        button_AccountTransactions.UseVisualStyleBackColor = true;
-        button_AccountTransactions.Click += Button_AccountTransactions_Click;
-        // 
-        // menuStrip_Toolbar
-        // 
-        menuStrip_Toolbar.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, aboutDebtorToolStripMenuItem });
-        menuStrip_Toolbar.Location = new Point(0, 0);
-        menuStrip_Toolbar.Name = "menuStrip_Toolbar";
-        menuStrip_Toolbar.RenderMode = ToolStripRenderMode.Professional;
-        menuStrip_Toolbar.Size = new Size(882, 24);
-        menuStrip_Toolbar.TabIndex = 1;
-        menuStrip_Toolbar.Text = "Toolbar";
+        menuStrip_Menu.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, aboutDebtorToolStripMenuItem });
+        menuStrip_Menu.Location = new Point(0, 0);
+        menuStrip_Menu.Name = "menuStrip_Menu";
+        menuStrip_Menu.Size = new Size(1334, 24);
+        menuStrip_Menu.TabIndex = 0;
+        menuStrip_Menu.Text = "menuStrip1";
         // 
         // fileToolStripMenuItem
         // 
@@ -103,66 +81,69 @@ partial class MainForm
         // statusStrip_Status
         // 
         statusStrip_Status.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel_Copyright });
-        statusStrip_Status.Location = new Point(0, 324);
+        statusStrip_Status.Location = new Point(0, 629);
         statusStrip_Status.Name = "statusStrip_Status";
-        statusStrip_Status.RenderMode = ToolStripRenderMode.Professional;
-        statusStrip_Status.Size = new Size(882, 22);
-        statusStrip_Status.TabIndex = 2;
+        statusStrip_Status.Size = new Size(1334, 22);
+        statusStrip_Status.TabIndex = 1;
         statusStrip_Status.Text = "statusStrip1";
         // 
         // toolStripStatusLabel_Copyright
         // 
         toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
-        toolStripStatusLabel_Copyright.Size = new Size(867, 17);
+        toolStripStatusLabel_Copyright.Size = new Size(1319, 17);
         toolStripStatusLabel_Copyright.Spring = true;
         toolStripStatusLabel_Copyright.Text = "©Vojtěch Novotný 2026";
         // 
-        // button_Users
+        // dataGridView_Users
         // 
-        button_Users.Location = new Point(590, 27);
-        button_Users.Name = "button_Users";
-        button_Users.Size = new Size(280, 294);
-        button_Users.TabIndex = 0;
-        button_Users.Text = "Users";
-        button_Users.UseVisualStyleBackColor = true;
-        button_Users.Click += Button_Users_Click;
+        dataGridView_Users.AllowUserToAddRows = false;
+        dataGridView_Users.AllowUserToDeleteRows = false;
+        dataGridView_Users.AllowUserToResizeColumns = false;
+        dataGridView_Users.AllowUserToResizeRows = false;
+        dataGridView_Users.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        dataGridView_Users.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+        dataGridView_Users.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridView_Users.Location = new Point(12, 27);
+        dataGridView_Users.MultiSelect = false;
+        dataGridView_Users.Name = "dataGridView_Users";
+        dataGridView_Users.ReadOnly = true;
+        dataGridView_Users.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        dataGridView_Users.Size = new Size(1310, 599);
+        dataGridView_Users.TabIndex = 2;
         // 
-        // MainForm
+        // UserGridForm
         // 
         AutoScaleDimensions = new SizeF(11F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(882, 346);
+        ClientSize = new Size(1334, 651);
+        Controls.Add(dataGridView_Users);
         Controls.Add(statusStrip_Status);
-        Controls.Add(button_Users);
-        Controls.Add(button_AccountTransactions);
-        Controls.Add(button_Accounts);
-        Controls.Add(menuStrip_Toolbar);
+        Controls.Add(menuStrip_Menu);
         Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
         FormBorderStyle = FormBorderStyle.FixedSingle;
-        MainMenuStrip = menuStrip_Toolbar;
+        MainMenuStrip = menuStrip_Menu;
         Margin = new Padding(5);
         MaximizeBox = false;
-        Name = "MainForm";
+        Name = "UserGridForm";
         StartPosition = FormStartPosition.CenterParent;
-        Text = "Debtor";
-        menuStrip_Toolbar.ResumeLayout(false);
-        menuStrip_Toolbar.PerformLayout();
+        Text = "User Grid Form";
+        menuStrip_Menu.ResumeLayout(false);
+        menuStrip_Menu.PerformLayout();
         statusStrip_Status.ResumeLayout(false);
         statusStrip_Status.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)dataGridView_Users).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
 
     #endregion
 
-    private Button button_Accounts;
-    private Button button_AccountTransactions;
-    private MenuStrip menuStrip_Toolbar;
+    private MenuStrip menuStrip_Menu;
+    private StatusStrip statusStrip_Status;
+    private ToolStripStatusLabel toolStripStatusLabel_Copyright;
     private ToolStripMenuItem fileToolStripMenuItem;
     private ToolStripMenuItem exitToolStripMenuItem;
     private ToolStripMenuItem aboutDebtorToolStripMenuItem;
     private ToolStripMenuItem githubToolStripMenuItem;
-    private StatusStrip statusStrip_Status;
-    private ToolStripStatusLabel toolStripStatusLabel_Copyright;
-    private Button button_Users;
+    private DataGridView dataGridView_Users;
 }
