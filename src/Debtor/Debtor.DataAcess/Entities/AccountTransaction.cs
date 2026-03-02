@@ -25,6 +25,7 @@ public class AccountTransaction
     [Column("currency")]
     [DisplayName("Currency")]
     public string Currency { get; set; }
+    //TODO: POŘEŠIT RŮZNÉ MĚNY NA JEDNOM ÚČTU, PŘEDVYPLNIT
 
     [Column("transaction_at")]
     [DisplayName("Transaction At")]

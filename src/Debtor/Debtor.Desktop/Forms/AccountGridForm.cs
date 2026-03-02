@@ -38,6 +38,7 @@ public partial class AccountGridForm : Form
             button_ExportCSV.Enabled = false;
 
             dataGridView_Accounts.DataSource = new BindingList<Account>(accounts.Where(a => a.Email == LoggedUser.Email).ToList());
+            dataGridView_Accounts.Refresh();
         }
     }
 
@@ -66,6 +67,7 @@ public partial class AccountGridForm : Form
                 MyDbContext.SaveChanges();
 
                 AccountsData.Remove(account);
+                dataGridView_Accounts.Refresh();
             }
         }
     }
@@ -102,6 +104,7 @@ public partial class AccountGridForm : Form
                 MyDbContext.SaveChanges();
 
                 AccountsData.Add(newAccount);
+                dataGridView_Accounts.Refresh();
             }
         }
 

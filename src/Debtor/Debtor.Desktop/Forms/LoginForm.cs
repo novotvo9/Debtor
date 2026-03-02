@@ -30,9 +30,9 @@ public partial class LoginForm : Form
             if (userToCheck.Email == user.Email && userToCheck.Password == user.Password)
             {
                 Account? account = MyDbContext.Accounts.FirstOrDefault(a => a.Email == userToCheck.Email);
-                if (account == null)
+                if (account == null && userToCheck.Email != "admin@hostmaster.com")
                 {
-                    //TODO: Email by chtělo předvyplněný i v mvc
+                    //TODO: Email by chtělo předvyplněný i v mvc; messageboxy na špatné údaje
                     AccountEditForm createForm = new();
                     this.Hide();
                     DialogResult dialogResult = createForm.ShowDialog();
@@ -64,8 +64,10 @@ public partial class LoginForm : Form
                 this.Hide();
                 MainForm form = new(userToCheck);
                 form.ShowDialog();
+                this.Close();
+                break;
             }
-        }      
+        }
     }
 
     public static string HashPassword(string password)

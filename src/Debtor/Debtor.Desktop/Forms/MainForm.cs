@@ -1,3 +1,4 @@
+using Debtor.DataAcess.Contexts;
 using Debtor.DataAcess.Entities;
 using Debtor.Desktop.Forms;
 using System.Diagnostics;
@@ -6,6 +7,8 @@ namespace Debtor.Desktop;
 
 public partial class MainForm : Form
 {
+    public decimal Balance { get; set; }
+    public MyDbContext MyDbContext { get; set; } = new();
     public User LoggedUser { get; set; }
     public MainForm(User loggedUser)
     {
@@ -14,6 +17,24 @@ public partial class MainForm : Form
         if (LoggedUser.Email != "admin@hostmaster.com")
         {
             button_Users.Enabled = false;
+        }
+
+        if (LoggedUser.Email != "admin@hostmaster.com")
+        {
+            Account usersAccount = MyDbContext.Accounts.FirstOrDefault(a => a.Email == LoggedUser.Email)!;
+            List<AccountTransaction>? usersTransactions = MyDbContext.AccountTransactions.Where(t => t.AccountId == usersAccount.Id).ToList();
+
+            if (usersTransactions.Any())
+            {
+                Balance = usersTransactions.Where(t => t.TransactionType == "payment").Sum(t => t.Amount) -
+                    usersTransactions.Where(t => t.TransactionType == "borrow").Sum(t => t.Amount);
+            }
+            else
+            {
+                Balance = 0;
+            }
+
+            MessageBox.Show($"Balance: {Balance}"); //TODO: TOHLE SI UDÌLAT JAKO BUTTON PRO USERY
         }
     }
 

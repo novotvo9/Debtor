@@ -27,6 +27,7 @@ public partial class AccountTransactionGridForm : Form
         {
             button_Delete.Enabled = false;
             button_Update.Enabled = false;
+            button_ExportCSV.Enabled = false;
         }
     }
 
@@ -54,10 +55,12 @@ public partial class AccountTransactionGridForm : Form
         {
             button_Delete.Enabled = false;
             button_Update.Enabled = false;
+            button_ExportCSV.Enabled= false;
 
             List<Account> accounts = MyDbContext.Accounts.ToList();
             Account loggedAccount = accounts.FirstOrDefault(a => a.Email == LoggedUser.Email)!;
             dataGridView_AccountTransactions.DataSource = new BindingList<AccountTransaction>(accountTransactions.Where(t => t.AccountId == loggedAccount.Id).ToList());
+            dataGridView_AccountTransactions.Refresh();
         }
     }
 
@@ -86,6 +89,7 @@ public partial class AccountTransactionGridForm : Form
                 MyDbContext.SaveChanges();
 
                 AccountTransactionsData.Remove(transaction);
+                dataGridView_AccountTransactions.Refresh();
             }
         }
     }
@@ -109,7 +113,8 @@ public partial class AccountTransactionGridForm : Form
             MyDbContext.AccountTransactions.Add(newTransaction);
             MyDbContext.SaveChanges();
 
-            AccountTransactionsData.Add(newTransaction);
+            dataGridView_AccountTransactions.DataSource = new BindingList<AccountTransaction>(MyDbContext.AccountTransactions.Where(t => t.AccountId == MyDbContext.Accounts.FirstOrDefault(a => a.Email == LoggedUser.Email)!.Id).ToList());
+            dataGridView_AccountTransactions.Refresh();
         }
 
         this.Show();

@@ -10,7 +10,7 @@
 
     <label for="accountId" class="form-label">Account ID:</label>
     <select asp-for="AccountId" class="form-select" id="accountId" disabled>
-        @foreach (Account account in Model.Accounts)
+        @foreach (Account account in Model.Accounts!)
         {
             if (account.Id == Model.AccountId)
             {
@@ -29,7 +29,7 @@
 
     <div class="mb-3">
         <label for="amount" class="form-label">Amount:</label>
-        <input asp-for="Amount" type="number" class="form-control" id="amount" min="-9999999999999999.99" max="9999999999999999.99">
+        <input asp-for="Amount" type="number" class="form-control" id="amount" min="1" max="9999999999999999.99">
     </div>
 
     <div class="mb-3">
