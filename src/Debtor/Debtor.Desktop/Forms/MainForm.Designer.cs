@@ -46,7 +46,7 @@ partial class MainForm
         // 
         button_Accounts.Location = new Point(12, 27);
         button_Accounts.Name = "button_Accounts";
-        button_Accounts.Size = new Size(280, 294);
+        button_Accounts.Size = new Size(280, 149);
         button_Accounts.TabIndex = 0;
         button_Accounts.Text = "Accounts";
         button_Accounts.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@ partial class MainForm
         // 
         button_AccountTransactions.Location = new Point(304, 27);
         button_AccountTransactions.Name = "button_AccountTransactions";
-        button_AccountTransactions.Size = new Size(280, 294);
+        button_AccountTransactions.Size = new Size(280, 149);
         button_AccountTransactions.TabIndex = 0;
         button_AccountTransactions.Text = "Account Transactions";
         button_AccountTransactions.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@ partial class MainForm
         // statusStrip_Status
         // 
         statusStrip_Status.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel_Copyright });
-        statusStrip_Status.Location = new Point(0, 324);
+        statusStrip_Status.Location = new Point(0, 183);
         statusStrip_Status.Name = "statusStrip_Status";
         statusStrip_Status.RenderMode = ToolStripRenderMode.Professional;
         statusStrip_Status.Size = new Size(882, 22);
@@ -121,7 +121,7 @@ partial class MainForm
         // 
         button_Users.Location = new Point(590, 27);
         button_Users.Name = "button_Users";
-        button_Users.Size = new Size(280, 294);
+        button_Users.Size = new Size(280, 149);
         button_Users.TabIndex = 0;
         button_Users.Text = "Users";
         button_Users.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@ partial class MainForm
         // 
         AutoScaleDimensions = new SizeF(11F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(882, 346);
+        ClientSize = new Size(882, 205);
         Controls.Add(statusStrip_Status);
         Controls.Add(button_Users);
         Controls.Add(button_AccountTransactions);
