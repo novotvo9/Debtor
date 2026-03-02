@@ -5,6 +5,7 @@ namespace Debtor.Desktop.Forms;
 public partial class AccountEditForm : Form
 {
     public List<string> AccountTypes { get; set; } = [];
+    //TODO: Druhý konstruktor s userem bez účtu???
     public AccountEditForm()
     {
         InitializeComponent();

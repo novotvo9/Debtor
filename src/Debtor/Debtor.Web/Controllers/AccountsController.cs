@@ -70,8 +70,6 @@ public class AccountsController : Controller
             }
         }
         return RedirectToAction("Index", "Dashboard");
-
-
     }
 
     [HttpGet]

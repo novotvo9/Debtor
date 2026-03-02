@@ -26,6 +26,15 @@ public class DashboardController : Controller
         DashboardIndexViewModel model = new();
 
         model.Account = account;
+
+        if (account == null)
+        {
+            //TODO: TADY VYTVOŘIT ÚČET, ale udělat check na existující účet a disable email field; different redirect (not to admin)
+            //TODO: Admin sites only admin permission
+
+            return RedirectToAction("Create", "Accounts");
+        }
+
         if (MyDbContext.AccountTransactions.Where(t => t.AccountId == account.Id).ToList() != null)
         {
             model.Transactions = MyDbContext.AccountTransactions.Where(t => t.AccountId == account.Id).ToList();
@@ -37,7 +46,8 @@ public class DashboardController : Controller
         }
         else
         {
-            model.Balance = model.Transactions.Sum(t => t.Amount);
+            model.Balance = model.Transactions.Where(t => t.TransactionType == "payment").Sum(t => t.Amount) -
+                model.Transactions.Where(t => t.TransactionType == "borrow").Sum(t => t.Amount);
         }
 
         return View(model);

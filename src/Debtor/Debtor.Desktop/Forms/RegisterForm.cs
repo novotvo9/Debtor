@@ -21,8 +21,7 @@ public partial class RegisterForm : Form
 
     private void Button_Register_Click(object sender, EventArgs e)
     {
-        // TODO: Validace
-
+        // TODO: If no account
         if (textBox_Password.Text == textBox_PasswordAgain.Text)
         {
             User newUser = new();
@@ -45,7 +44,5 @@ public partial class RegisterForm : Form
 
             MessageBox.Show("Error! Passwords do not match");
         }
-
-        
     }
 }

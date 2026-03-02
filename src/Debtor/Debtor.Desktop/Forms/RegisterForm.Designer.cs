@@ -41,7 +41,7 @@ partial class RegisterForm
         // label_Email
         // 
         label_Email.AutoSize = true;
-        label_Email.Location = new Point(74, 65);
+        label_Email.Location = new Point(99, 65);
         label_Email.Name = "label_Email";
         label_Email.Size = new Size(62, 25);
         label_Email.TabIndex = 0;
@@ -50,7 +50,7 @@ partial class RegisterForm
         // label_Password
         // 
         label_Password.AutoSize = true;
-        label_Password.Location = new Point(63, 121);
+        label_Password.Location = new Point(66, 125);
         label_Password.Name = "label_Password";
         label_Password.Size = new Size(95, 25);
         label_Password.TabIndex = 1;
@@ -59,7 +59,7 @@ partial class RegisterForm
         // label_PasswordAgain
         // 
         label_PasswordAgain.AutoSize = true;
-        label_PasswordAgain.Location = new Point(25, 164);
+        label_PasswordAgain.Location = new Point(12, 164);
         label_PasswordAgain.Name = "label_PasswordAgain";
         label_PasswordAgain.Size = new Size(149, 25);
         label_PasswordAgain.TabIndex = 1;
@@ -67,25 +67,25 @@ partial class RegisterForm
         // 
         // textBox_Email
         // 
-        textBox_Email.Location = new Point(156, 62);
+        textBox_Email.Location = new Point(167, 62);
         textBox_Email.Name = "textBox_Email";
-        textBox_Email.Size = new Size(186, 33);
+        textBox_Email.Size = new Size(175, 33);
         textBox_Email.TabIndex = 2;
         // 
         // textBox_Password
         // 
-        textBox_Password.Location = new Point(164, 118);
+        textBox_Password.Location = new Point(167, 122);
         textBox_Password.Name = "textBox_Password";
         textBox_Password.PasswordChar = '*';
-        textBox_Password.Size = new Size(178, 33);
+        textBox_Password.Size = new Size(175, 33);
         textBox_Password.TabIndex = 3;
         // 
         // textBox_PasswordAgain
         // 
-        textBox_PasswordAgain.Location = new Point(164, 161);
+        textBox_PasswordAgain.Location = new Point(167, 161);
         textBox_PasswordAgain.Name = "textBox_PasswordAgain";
         textBox_PasswordAgain.PasswordChar = '*';
-        textBox_PasswordAgain.Size = new Size(178, 33);
+        textBox_PasswordAgain.Size = new Size(175, 33);
         textBox_PasswordAgain.TabIndex = 3;
         // 
         // button_Register

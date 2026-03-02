@@ -29,6 +29,38 @@ public partial class LoginForm : Form
         {
             if (userToCheck.Email == user.Email && userToCheck.Password == user.Password)
             {
+                Account? account = MyDbContext.Accounts.FirstOrDefault(a => a.Email == userToCheck.Email);
+                if (account == null)
+                {
+                    //TODO: Email by chtělo předvyplněný i v mvc
+                    AccountEditForm createForm = new();
+                    this.Hide();
+                    DialogResult dialogResult = createForm.ShowDialog();
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Account newAccount = createForm.CreateAccount();
+
+                        int i = 0;
+                        foreach (var a in MyDbContext.Accounts.ToList())
+                        {
+                            if (newAccount.Email == a.Email)
+                            {
+                                i++;
+                                break;
+                            }
+                        }
+
+                        if (i == 0)
+                        {
+                            MyDbContext.Accounts.Add(newAccount);
+                            MyDbContext.SaveChanges();
+                        }
+                    }
+
+                    this.Show();
+                }
+
                 this.Hide();
                 MainForm form = new(userToCheck);
                 form.ShowDialog();

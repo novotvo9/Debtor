@@ -1,6 +1,7 @@
 ﻿using Debtor.DataAcess.Contexts;
 using Debtor.DataAcess.Entities;
 using Debtor.ImportExport;
+using Org.BouncyCastle.Asn1.X509;
 using System.ComponentModel;
 using System.Diagnostics;
 
@@ -33,6 +34,8 @@ public partial class AccountGridForm : Form
             button_Delete.Enabled = false;
             button_Update.Enabled = false;
             button_Detail.Enabled = false;
+            button_Create.Enabled = false;
+            button_ExportCSV.Enabled = false;
 
             dataGridView_Accounts.DataSource = new BindingList<Account>(accounts.Where(a => a.Email == LoggedUser.Email).ToList());
         }
@@ -83,15 +86,22 @@ public partial class AccountGridForm : Form
         {
             Account newAccount = form.CreateAccount();
 
+            int i = 0;
             foreach (var account in MyDbContext.Accounts.ToList())
             {
-                if (newAccount.Email != account.Email)
+                if (newAccount.Email == account.Email)
                 {
-                    MyDbContext.Accounts.Add(newAccount);
-                    MyDbContext.SaveChanges();
-
-                    AccountsData.Add(newAccount);
+                    i++;
+                    break;
                 }
+            }
+
+            if (i == 0)
+            {
+                MyDbContext.Accounts.Add(newAccount);
+                MyDbContext.SaveChanges();
+
+                AccountsData.Add(newAccount);
             }
         }
 
