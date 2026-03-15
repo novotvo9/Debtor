@@ -23,4 +23,7 @@ public class TransactionsCreateViewModel
     [Required]
     public string PaymentMethod { get; set; }
     public List<Account>? Accounts { get; set; } = [];
+    public bool IsNonAdmin { get; set; } = false;
+    public Guid UsersGuid { get; set; } = new();
+    public string PreviousCurrency { get; set; } = "!";
 }

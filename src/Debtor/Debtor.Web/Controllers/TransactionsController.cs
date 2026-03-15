@@ -31,6 +31,25 @@ public class TransactionsController : Controller
     {
         TransactionsCreateViewModel model = new();
         model.Accounts = MyDbContext.Accounts.ToList();
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            model.IsNonAdmin = true;
+            model.UsersGuid = MyDbContext.Accounts.FirstOrDefault(a => a.Email == HttpContext.User.FindFirstValue("email"))!.Id;
+        }
+
+        Account? usersAccount = MyDbContext.Accounts.FirstOrDefault(a => a.Email == HttpContext.User.FindFirstValue("email"));
+        
+        if (usersAccount != null)
+        {
+            int count = MyDbContext.AccountTransactions.Count(t => t.AccountId == usersAccount.Id);
+
+            if (count > 0)
+            {
+                model.PreviousCurrency = MyDbContext.AccountTransactions.Where(t => t.AccountId == usersAccount.Id).ToList()[0].Currency;
+            }
+        }
+        
+        
         return View(model);
     }
 

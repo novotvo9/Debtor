@@ -59,6 +59,12 @@ public class AccountsController : Controller
         }
 
         AccountsCreateViewModel model = new();
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            model.IsNonAdmin = true;
+            model.UsersEmail = HttpContext.User.FindFirstValue("email")!;
+        }
+        
         return View(model);
     }
 
@@ -87,11 +93,19 @@ public class AccountsController : Controller
                 MyDbContext.Accounts.Add(newAccount);
                 MyDbContext.SaveChanges();
 
-                return RedirectToAction(nameof(Detail), new { id = newAccount.Id });
+                if (HttpContext.User.FindFirstValue("email") == "admin@hostmaster.com")
+                {
+                    return RedirectToAction("All", "Accounts");
+                }
+                return RedirectToAction("Index", "Dashboard");
+
+                //return RedirectToAction(nameof(Detail), new { id = newAccount.Id });
             }
+
         }
         return RedirectToAction("Index", "Dashboard");
     }
+
 
     [HttpGet]
     public IActionResult Update(Guid id)
@@ -148,7 +162,12 @@ public class AccountsController : Controller
         MyDbContext.Accounts.Update(existingAccount);
         MyDbContext.SaveChanges();
 
-        return RedirectToAction(nameof(Detail), new { id = id });
+        //return RedirectToAction(nameof(Detail), new { id = id });
+        if (HttpContext.User.FindFirstValue("email") == "admin@hostmaster.com")
+        {
+            return RedirectToAction("All", "Accounts");
+        }
+        return RedirectToAction("Index", "Dashboard");
     }
 
     [HttpPost]

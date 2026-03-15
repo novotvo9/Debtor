@@ -9,12 +9,12 @@
     <input type="hidden" asp-for="AccountId" />
 
     <label for="accountId" class="form-label">Account ID:</label>
-    <select asp-for="AccountId" class="form-select" id="accountId" disabled>
+    <select asp-for="AccountId" class="form-select" id="accountId">
         @foreach (Account account in Model.Accounts!)
         {
             if (account.Id == Model.AccountId)
             {
-                <option value="@account.Id" disabled>
+                <option value="@account.Id">
                     @account.Id
                 </option>
             }
@@ -34,7 +34,7 @@
 
     <div class="mb-3">
         <label for="currency" class="form-label">Currency:</label>
-        <input asp-for="Currency" type="text" class="form-control" id="currency" maxlength="3">
+        <input asp-for="Currency" type="text" class="form-control" id="currency" maxlength="3" readonly>
     </div>
 
     <label for="paymentMethod" class="form-label">Payment Method:</label>

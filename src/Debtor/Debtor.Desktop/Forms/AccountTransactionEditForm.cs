@@ -17,8 +17,8 @@ public partial class AccountTransactionEditForm : Form
         if (LoggedUser.Email != "admin@hostmaster.com")
         {
             comboBox_Accounts.SelectedItem = MyDbContext.Accounts.FirstOrDefault(a => a.Email == LoggedUser.Email)!.Id.ToString();
-            comboBox_Accounts.Enabled = false;
         }
+        comboBox_Accounts.Enabled = false;
 
         int count = 0;
         Account? usersAccount = MyDbContext.Accounts.FirstOrDefault(a => a.Email == LoggedUser.Email);

@@ -19,5 +19,7 @@ public class AccountsCreateViewModel
     public string Phone { get; set; }
     [Required]
     public DateTime CreatedAt { get; set; }
+    public bool IsNonAdmin { get; set; } = false;
+    public string UsersEmail { get; set; } = "!";
 
 }
