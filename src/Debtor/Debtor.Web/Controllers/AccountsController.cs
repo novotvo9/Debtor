@@ -2,6 +2,7 @@
 using Debtor.DataAcess.Entities;
 using Debtor.Web.Models.Accounts;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Debtor.Web.Controllers;
 
@@ -19,6 +20,11 @@ public class AccountsController : Controller
 
     public IActionResult All()
     {
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         return View(Accounts);
     }
 
@@ -31,12 +37,27 @@ public class AccountsController : Controller
             return NotFound();
         }
 
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         return View(slectedAccountTransactions);
     }
 
     [HttpGet]
     public IActionResult Create()
-    {
+    { 
+        Account? existingAccount = MyDbContext.Accounts.Where(a => a.Email == HttpContext.User.FindFirstValue("email")).FirstOrDefault();
+
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            if (existingAccount != null)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+        }
+
         AccountsCreateViewModel model = new();
         return View(model);
     }
@@ -78,6 +99,11 @@ public class AccountsController : Controller
         Account? existingAccount = MyDbContext.Accounts.FirstOrDefault(a => a.Id == id);
         if (existingAccount == null)
         {
+            if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+
             return RedirectToAction(nameof(All));
         }
 
@@ -101,6 +127,11 @@ public class AccountsController : Controller
         Account? existingAccount = MyDbContext.Accounts.FirstOrDefault(a => a.Id == id);
         if (existingAccount == null)
         {
+            if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+
             return RedirectToAction(nameof(All));
         }
 

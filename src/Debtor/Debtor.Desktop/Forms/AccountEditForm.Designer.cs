@@ -124,7 +124,7 @@ partial class AccountEditForm
         button_Cancel.Location = new Point(403, 176);
         button_Cancel.Name = "button_Cancel";
         button_Cancel.Size = new Size(94, 37);
-        button_Cancel.TabIndex = 5;
+        button_Cancel.TabIndex = 6;
         button_Cancel.Text = "Cancel";
         button_Cancel.UseVisualStyleBackColor = true;
         button_Cancel.Click += Button_Cancel_Click;

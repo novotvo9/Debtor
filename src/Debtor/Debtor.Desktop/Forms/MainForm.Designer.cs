@@ -47,7 +47,7 @@ partial class MainForm
         button_Accounts.Location = new Point(12, 27);
         button_Accounts.Name = "button_Accounts";
         button_Accounts.Size = new Size(280, 149);
-        button_Accounts.TabIndex = 0;
+        button_Accounts.TabIndex = 1;
         button_Accounts.Text = "Accounts";
         button_Accounts.UseVisualStyleBackColor = true;
         button_Accounts.Click += Button_Accounts_Click;
@@ -57,7 +57,7 @@ partial class MainForm
         button_AccountTransactions.Location = new Point(304, 27);
         button_AccountTransactions.Name = "button_AccountTransactions";
         button_AccountTransactions.Size = new Size(280, 149);
-        button_AccountTransactions.TabIndex = 0;
+        button_AccountTransactions.TabIndex = 2;
         button_AccountTransactions.Text = "Account Transactions";
         button_AccountTransactions.UseVisualStyleBackColor = true;
         button_AccountTransactions.Click += Button_AccountTransactions_Click;
@@ -122,7 +122,7 @@ partial class MainForm
         button_Users.Location = new Point(590, 27);
         button_Users.Name = "button_Users";
         button_Users.Size = new Size(280, 149);
-        button_Users.TabIndex = 0;
+        button_Users.TabIndex = 3;
         button_Users.Text = "Users";
         button_Users.UseVisualStyleBackColor = true;
         button_Users.Click += Button_Users_Click;

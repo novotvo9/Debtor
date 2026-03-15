@@ -7,5 +7,6 @@ namespace Debtor.Web.Models.Dashboard
         public Account Account { get; set; } = new();
         public List<AccountTransaction> Transactions { get; set; } = [];
         public decimal Balance { get; set; }
+        public string Currency { get; set; } = "";
     }
 }

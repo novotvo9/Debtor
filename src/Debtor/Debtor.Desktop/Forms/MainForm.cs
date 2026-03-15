@@ -7,7 +7,8 @@ namespace Debtor.Desktop;
 
 public partial class MainForm : Form
 {
-    public decimal Balance { get; set; }
+    public decimal Balance { get; set; } = 0;
+    public string Currency { get; set; } = "";
     public MyDbContext MyDbContext { get; set; } = new();
     public User LoggedUser { get; set; }
     public MainForm(User loggedUser)
@@ -28,13 +29,10 @@ public partial class MainForm : Form
             {
                 Balance = usersTransactions.Where(t => t.TransactionType == "payment").Sum(t => t.Amount) -
                     usersTransactions.Where(t => t.TransactionType == "borrow").Sum(t => t.Amount);
-            }
-            else
-            {
-                Balance = 0;
+                Currency = usersTransactions.First().Currency;
             }
 
-            MessageBox.Show($"Balance: {Balance}"); //TODO: TOHLE SI UDÌLAT JAKO BUTTON PRO USERY
+            MessageBox.Show($"Balance: {Balance} {Currency}");
         }
     }
 

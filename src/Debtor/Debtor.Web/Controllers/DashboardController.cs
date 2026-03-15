@@ -29,9 +29,6 @@ public class DashboardController : Controller
 
         if (account == null)
         {
-            //TODO: TADY VYTVOŘIT ÚČET, ale udělat check na existující účet a disable email field; different redirect (not to admin)
-            //TODO: Admin sites only admin permission
-
             return RedirectToAction("Create", "Accounts");
         }
 
@@ -48,6 +45,7 @@ public class DashboardController : Controller
         {
             model.Balance = model.Transactions.Where(t => t.TransactionType == "payment").Sum(t => t.Amount) -
                 model.Transactions.Where(t => t.TransactionType == "borrow").Sum(t => t.Amount);
+            model.Currency = model.Transactions[0].Currency;
         }
 
         return View(model);

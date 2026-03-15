@@ -74,7 +74,7 @@ partial class UserGridForm
         // githubToolStripMenuItem
         // 
         githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-        githubToolStripMenuItem.Size = new Size(110, 22);
+        githubToolStripMenuItem.Size = new Size(180, 22);
         githubToolStripMenuItem.Text = "&Github";
         githubToolStripMenuItem.Click += GithubToolStripMenuItem_Click;
         // 
@@ -109,7 +109,7 @@ partial class UserGridForm
         dataGridView_Users.ReadOnly = true;
         dataGridView_Users.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridView_Users.Size = new Size(1310, 599);
-        dataGridView_Users.TabIndex = 2;
+        dataGridView_Users.TabIndex = 0;
         // 
         // UserGridForm
         // 

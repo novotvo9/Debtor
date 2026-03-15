@@ -21,12 +21,22 @@ public class UsersController : Controller
     [HttpGet]
     public IActionResult All()
     {
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         return View(Users);
     }
 
     [HttpGet]
     public IActionResult Login()
     {
+        if (HttpContext.User.FindFirstValue("email") != null)
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         UsersLoginViewModel model = new();
         return View(model);
     }
@@ -65,11 +75,6 @@ public class UsersController : Controller
 
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-        if (user.Email == "admin@hostmaster.com")
-        {
-            return RedirectToAction("Index", "Home");
-        }
-
         return RedirectToAction("Index", "Dashboard");
     }
 
@@ -85,6 +90,11 @@ public class UsersController : Controller
     [HttpGet]
     public IActionResult Register()
     {
+        if (HttpContext.User.FindFirstValue("email") != null)
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         UsersRegisterViewModel model = new();
         return View(model);
     }

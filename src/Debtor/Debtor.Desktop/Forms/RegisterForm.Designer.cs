@@ -70,7 +70,7 @@ partial class RegisterForm
         textBox_Email.Location = new Point(167, 6);
         textBox_Email.Name = "textBox_Email";
         textBox_Email.Size = new Size(225, 33);
-        textBox_Email.TabIndex = 2;
+        textBox_Email.TabIndex = 1;
         // 
         // textBox_Password
         // 
@@ -78,7 +78,7 @@ partial class RegisterForm
         textBox_Password.Name = "textBox_Password";
         textBox_Password.PasswordChar = '*';
         textBox_Password.Size = new Size(225, 33);
-        textBox_Password.TabIndex = 3;
+        textBox_Password.TabIndex = 2;
         // 
         // textBox_PasswordAgain
         // 
@@ -103,7 +103,7 @@ partial class RegisterForm
         button_Cancel.Location = new Point(213, 123);
         button_Cancel.Name = "button_Cancel";
         button_Cancel.Size = new Size(180, 83);
-        button_Cancel.TabIndex = 4;
+        button_Cancel.TabIndex = 5;
         button_Cancel.Text = "Cancel";
         button_Cancel.UseVisualStyleBackColor = true;
         button_Cancel.Click += Button_Cancel_Click;
@@ -112,7 +112,7 @@ partial class RegisterForm
         // 
         AutoScaleDimensions = new SizeF(11F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(404, 215);
+        ClientSize = new Size(415, 215);
         Controls.Add(button_Cancel);
         Controls.Add(button_Register);
         Controls.Add(textBox_PasswordAgain);

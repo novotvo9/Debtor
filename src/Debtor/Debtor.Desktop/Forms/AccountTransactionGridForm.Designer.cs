@@ -81,10 +81,10 @@ partial class AccountTransactionGridForm
         // 
         // button_Delete
         // 
-        button_Delete.Location = new Point(154, 592);
+        button_Delete.Location = new Point(438, 592);
         button_Delete.Name = "button_Delete";
         button_Delete.Size = new Size(136, 34);
-        button_Delete.TabIndex = 1;
+        button_Delete.TabIndex = 4;
         button_Delete.Text = "Delete";
         button_Delete.UseVisualStyleBackColor = true;
         button_Delete.Click += Button_Delete_Click;
@@ -140,26 +140,26 @@ partial class AccountTransactionGridForm
         // toolStripStatusLabel_Copyright
         // 
         toolStripStatusLabel_Copyright.Name = "toolStripStatusLabel_Copyright";
-        toolStripStatusLabel_Copyright.Size = new Size(1288, 17);
+        toolStripStatusLabel_Copyright.Size = new Size(1319, 17);
         toolStripStatusLabel_Copyright.Spring = true;
         toolStripStatusLabel_Copyright.Text = "©Vojtěch Novotný 2026";
         // 
         // button_Create
         // 
-        button_Create.Location = new Point(296, 592);
+        button_Create.Location = new Point(154, 592);
         button_Create.Name = "button_Create";
         button_Create.Size = new Size(136, 34);
-        button_Create.TabIndex = 1;
+        button_Create.TabIndex = 2;
         button_Create.Text = "Create";
         button_Create.UseVisualStyleBackColor = true;
         button_Create.Click += Button_Create_Click;
         // 
         // button_Update
         // 
-        button_Update.Location = new Point(438, 592);
+        button_Update.Location = new Point(296, 592);
         button_Update.Name = "button_Update";
         button_Update.Size = new Size(136, 34);
-        button_Update.TabIndex = 1;
+        button_Update.TabIndex = 3;
         button_Update.Text = "Update";
         button_Update.UseVisualStyleBackColor = true;
         button_Update.Click += Button_Update_Click;

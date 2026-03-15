@@ -50,7 +50,7 @@ partial class AccountTransactionEditForm
         button_Cancel.Location = new Point(403, 202);
         button_Cancel.Name = "button_Cancel";
         button_Cancel.Size = new Size(94, 37);
-        button_Cancel.TabIndex = 0;
+        button_Cancel.TabIndex = 8;
         button_Cancel.Text = "Cancel";
         button_Cancel.UseVisualStyleBackColor = true;
         button_Cancel.Click += Button_Cancel_Click;
@@ -60,7 +60,7 @@ partial class AccountTransactionEditForm
         button_Update.Location = new Point(246, 202);
         button_Update.Name = "button_Update";
         button_Update.Size = new Size(151, 37);
-        button_Update.TabIndex = 0;
+        button_Update.TabIndex = 7;
         button_Update.Text = "Edit / Create";
         button_Update.UseVisualStyleBackColor = true;
         button_Update.Click += Button_Update_Click;
@@ -80,7 +80,7 @@ partial class AccountTransactionEditForm
         comboBox_Accounts.Location = new Point(182, 12);
         comboBox_Accounts.Name = "comboBox_Accounts";
         comboBox_Accounts.Size = new Size(315, 33);
-        comboBox_Accounts.TabIndex = 2;
+        comboBox_Accounts.TabIndex = 1;
         // 
         // label_TransactionType
         // 
@@ -153,7 +153,7 @@ partial class AccountTransactionEditForm
         radioButton_Cash.Location = new Point(118, 34);
         radioButton_Cash.Name = "radioButton_Cash";
         radioButton_Cash.Size = new Size(71, 29);
-        radioButton_Cash.TabIndex = 1;
+        radioButton_Cash.TabIndex = 6;
         radioButton_Cash.Text = "Cash";
         radioButton_Cash.UseVisualStyleBackColor = true;
         // 
@@ -164,7 +164,7 @@ partial class AccountTransactionEditForm
         radioButton_Bank.Location = new Point(26, 34);
         radioButton_Bank.Name = "radioButton_Bank";
         radioButton_Bank.Size = new Size(71, 29);
-        radioButton_Bank.TabIndex = 0;
+        radioButton_Bank.TabIndex = 5;
         radioButton_Bank.TabStop = true;
         radioButton_Bank.Text = "Bank";
         radioButton_Bank.UseVisualStyleBackColor = true;

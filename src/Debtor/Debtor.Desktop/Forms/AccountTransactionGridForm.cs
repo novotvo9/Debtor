@@ -43,7 +43,6 @@ public partial class AccountTransactionGridForm : Form
 
     private void LoadAccountTransactionData()
     {
-        //List<AccountTransaction> accountTransactions = MyDbContext.AccountTransactions.Include(a => a.Account).ToList();
         List<AccountTransaction> accountTransactions = MyDbContext.AccountTransactions.ToList();
         AccountTransactionsData = new BindingList<AccountTransaction>(accountTransactions);
 

@@ -18,6 +18,11 @@ public class TransactionsController : Controller
 
     public IActionResult All()
     {
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         return View(Transactions);
     }
 
@@ -41,7 +46,7 @@ public class TransactionsController : Controller
         newTransaction.AccountId = model.AccountId;
         newTransaction.TransactionType = model.TransactionType;
         newTransaction.Amount = model.Amount;
-        newTransaction.Currency = model.Currency;
+        newTransaction.Currency = model.Currency.ToUpper();
         newTransaction.PaymentMethod = model.PaymentMethod;
 
         newTransaction.TransactionAt = DateTime.Now;
@@ -59,6 +64,11 @@ public class TransactionsController : Controller
     [HttpGet]
     public IActionResult Update(int id)
     {
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         AccountTransaction? existingTransaction = MyDbContext.AccountTransactions.FirstOrDefault(t => t.Id == id);
 
         if (existingTransaction == null)
@@ -73,7 +83,7 @@ public class TransactionsController : Controller
         model.AccountId = existingTransaction.AccountId;
         model.TransactionType = existingTransaction.TransactionType;
         model.Amount = existingTransaction.Amount;
-        model.Currency = existingTransaction.Currency;
+        model.Currency = existingTransaction.Currency.ToUpper();
         model.TransactionAt = existingTransaction.TransactionAt;
         model.PaymentMethod = existingTransaction.PaymentMethod;
 
@@ -89,6 +99,11 @@ public class TransactionsController : Controller
         
         if (existingTransaction == null)
         {
+            if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+
             return RedirectToAction(nameof(All));
         }
 
@@ -100,7 +115,7 @@ public class TransactionsController : Controller
         existingTransaction.AccountId = model.AccountId;
         existingTransaction.TransactionType = model.TransactionType;
         existingTransaction.Amount = model.Amount;
-        existingTransaction.Currency = model.Currency;
+        existingTransaction.Currency = model.Currency.ToUpper();
         existingTransaction.PaymentMethod = model.PaymentMethod;
 
         MyDbContext.AccountTransactions.Update(existingTransaction);
