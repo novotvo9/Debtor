@@ -32,8 +32,7 @@ public partial class LoginForm : Form
                 Account? account = MyDbContext.Accounts.FirstOrDefault(a => a.Email == userToCheck.Email);
                 if (account == null && userToCheck.Email != "admin@hostmaster.com")
                 {
-                    //TODO: Email by chtělo předvyplněný i v mvc; messageboxy na špatné údaje
-                    AccountEditForm createForm = new();
+                    AccountEditForm createForm = new(userToCheck);
                     this.Hide();
                     DialogResult dialogResult = createForm.ShowDialog();
 

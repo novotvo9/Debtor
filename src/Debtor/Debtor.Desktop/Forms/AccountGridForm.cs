@@ -1,7 +1,6 @@
 ﻿using Debtor.DataAcess.Contexts;
 using Debtor.DataAcess.Entities;
 using Debtor.ImportExport;
-using Org.BouncyCastle.Asn1.X509;
 using System.ComponentModel;
 using System.Diagnostics;
 
@@ -79,7 +78,7 @@ public partial class AccountGridForm : Form
 
     private void Button_Create_Click(object sender, EventArgs e)
     {
-        AccountEditForm form = new();
+        AccountEditForm form = new(LoggedUser);
         this.Hide();
         DialogResult dialogResult = form.ShowDialog();
 
@@ -115,7 +114,7 @@ public partial class AccountGridForm : Form
     {
         if (dataGridView_Accounts.CurrentRow != null)
         {
-            AccountEditForm form = new();
+            AccountEditForm form = new(LoggedUser);
 
             Account accountToUpdate = AccountsData[dataGridView_Accounts.CurrentRow.Index];
 

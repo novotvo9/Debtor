@@ -8,17 +8,36 @@ public partial class AccountTransactionEditForm : Form
     public MyDbContext MyDbContext { get; set; } = new();
     public List<string> TransactionTypes { get; set; } = [];
     public List<Account> Accounts { get; set; } = [];
-    public AccountTransactionEditForm()
+    public User LoggedUser { get; set; }
+    public AccountTransactionEditForm(User loggedUser)
     {
         InitializeComponent();
         LoadCombobox();
+        LoggedUser = loggedUser;
+        if (LoggedUser.Email != "admin@hostmaster.com")
+        {
+            comboBox_Accounts.SelectedItem = MyDbContext.Accounts.FirstOrDefault(a => a.Email == LoggedUser.Email)!.Id.ToString();
+            comboBox_Accounts.Enabled = false;
+        }
+
+        int count = 0;
+        Account? usersAccount = MyDbContext.Accounts.FirstOrDefault(a => a.Email == LoggedUser.Email);
+        if (usersAccount != null)
+        {
+            count = MyDbContext.AccountTransactions.Count(t => t.AccountId == usersAccount.Id);
+        }
+
+        if (count > 0)
+        {
+            textBox_Currency.Text = MyDbContext.AccountTransactions.FirstOrDefault(t => t.AccountId == usersAccount!.Id)!.Currency;
+            textBox_Currency.Enabled = false;
+        }
     }
 
     private void LoadCombobox()
     {
         TransactionTypes = ["payment", "borrow"];
         comboBox_TransactionTypes.DataSource = TransactionTypes;
-        //comboBox_Accounts.Enabled = false; TODO: disable only on update or create separet form
 
         Accounts = MyDbContext.Accounts.ToList();
 

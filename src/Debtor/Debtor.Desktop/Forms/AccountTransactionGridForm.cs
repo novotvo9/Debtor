@@ -100,7 +100,7 @@ public partial class AccountTransactionGridForm : Form
 
     private void Button_Create_Click(object sender, EventArgs e)
     {
-        AccountTransactionEditForm form = new();
+        AccountTransactionEditForm form = new(LoggedUser);
         this.Hide();
         DialogResult dialogResult = form.ShowDialog();
 
@@ -123,7 +123,7 @@ public partial class AccountTransactionGridForm : Form
     {
         if (dataGridView_AccountTransactions.CurrentRow != null)
         {
-            AccountTransactionEditForm form = new();
+            AccountTransactionEditForm form = new(LoggedUser);
 
             AccountTransaction transactionToUpdate = AccountTransactionsData[dataGridView_AccountTransactions.CurrentRow.Index];
 

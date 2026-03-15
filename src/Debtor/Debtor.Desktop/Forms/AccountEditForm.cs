@@ -1,15 +1,24 @@
 ﻿using Debtor.DataAcess.Entities;
+using System.ComponentModel;
 
 namespace Debtor.Desktop.Forms;
 
 public partial class AccountEditForm : Form
 {
     public List<string> AccountTypes { get; set; } = [];
-    //TODO: Druhý konstruktor s userem bez účtu???
-    public AccountEditForm()
+    public User LoggedUser { get; set; }
+
+    public AccountEditForm(User loggedUser)
     {
         InitializeComponent();
         LoadCombobox();
+        LoggedUser = loggedUser;
+        if (LoggedUser.Email != "admin@hostmaster.com")
+        {
+            comboBox_AccountTypes.Enabled = false;
+            textBox_Email.Text = LoggedUser.Email;
+            textBox_Email.Enabled = false;
+        }
     }
 
     private void LoadCombobox()
