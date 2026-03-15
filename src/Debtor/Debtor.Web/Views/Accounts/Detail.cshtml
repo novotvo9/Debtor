@@ -32,9 +32,7 @@
                 <td>@transaction.TransactionAt</td>
                 <td>@transaction.PaymentMethod</td>
                 <td>
-                    <form method="post" asp-controller="Transactions" asp-action="Update" asp-route-id="@transaction.Id">
-                        <button type="submit" class="btn btn-warning">Update</button>
-                    </form>
+                    <a asp-controller="Transactions" asp-action="Update" asp-route-id="@transaction.Id" class="btn btn-warning">Update</a>
                 </td>
                 <td>
                     <form method="post" asp-controller="Transactions" asp-action="Delete" asp-route-id="@transaction.Id">
@@ -47,4 +45,4 @@
 </table>
 
 @* @if (Model.Count != 0) { <a class="btn btn-primary" asp-controller="Accounts" asp-action="Detail" asp-route-id="@Model[0].AccountId">Back to detail</a>} *@
-<a class="btn btn-primary" asp-controller="Accounts" asp-action="All">Back to list</a>
+<a class="btn btn-primary mt-3" asp-controller="Accounts" asp-action="All">Back to list</a>

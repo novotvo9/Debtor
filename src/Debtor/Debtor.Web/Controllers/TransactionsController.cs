@@ -29,6 +29,11 @@ public class TransactionsController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        {
+            return RedirectToAction("Index", "Dashboard");
+        }
+
         TransactionsCreateViewModel model = new();
         model.Accounts = MyDbContext.Accounts.ToList();
         if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")

@@ -23,13 +23,13 @@
 
     <label for="transactionType" class="form-label">Transation Type:</label>
     <select asp-for="TransactionType" class="form-select" id="transactionType">
-        <option selected value="payment">payment</option>
-        <option value="borrow">borrow</option>
+        <option value="payment">payment</option>
+        <option value="debt">debt</option>
     </select>
 
     <div class="mb-3">
         <label for="amount" class="form-label">Amount:</label>
-        <input asp-for="Amount" type="number" class="form-control" id="amount" value="1" min="1" max="9999999999999999.99">
+        <input asp-for="Amount" type="number" class="form-control" id="amount" min="1" max="9999999999999999.99">
     </div>
 
     <div class="mb-3">
@@ -39,7 +39,7 @@
 
     <label for="paymentMethod" class="form-label">Payment Method:</label>
     <select asp-for="PaymentMethod" class="form-select" id="paymentMethod">
-        <option selected value="bank">bank</option>
+        <option value="bank">bank</option>
         <option value="cash">cash</option>
     </select>
 

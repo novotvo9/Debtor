@@ -1,5 +1,4 @@
 ﻿using Debtor.DataAcess.Entities;
-using System.ComponentModel;
 
 namespace Debtor.Desktop.Forms;
 
@@ -7,17 +6,27 @@ public partial class AccountEditForm : Form
 {
     public List<string> AccountTypes { get; set; } = [];
     public User LoggedUser { get; set; }
+    public bool UpdateOp { get; set; } = false;
 
-    public AccountEditForm(User loggedUser)
+    public AccountEditForm(User loggedUser, bool update)
     {
         InitializeComponent();
         LoadCombobox();
         LoggedUser = loggedUser;
+        UpdateOp = update;
         if (LoggedUser.Email != "admin@hostmaster.com")
         {
             comboBox_AccountTypes.Enabled = false;
             textBox_Email.Text = LoggedUser.Email;
             textBox_Email.Enabled = false;
+        }
+        if (UpdateOp == true)
+        {
+            textBox_Email.Enabled = false;
+        }
+        else
+        {
+            textBox_Email.Enabled = true;
         }
     }
 

@@ -78,7 +78,7 @@ public partial class AccountGridForm : Form
 
     private void Button_Create_Click(object sender, EventArgs e)
     {
-        AccountEditForm form = new(LoggedUser);
+        AccountEditForm form = new(LoggedUser, false);
         this.Hide();
         DialogResult dialogResult = form.ShowDialog();
 
@@ -114,7 +114,7 @@ public partial class AccountGridForm : Form
     {
         if (dataGridView_Accounts.CurrentRow != null)
         {
-            AccountEditForm form = new(LoggedUser);
+            AccountEditForm form = new(LoggedUser, true);
 
             Account accountToUpdate = AccountsData[dataGridView_Accounts.CurrentRow.Index];
 

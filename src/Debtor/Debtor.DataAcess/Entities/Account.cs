@@ -26,6 +26,4 @@ public class Account
     [Column("created_at")]
     [DisplayName("Created At")]
     public DateTime CreatedAt { get; set; }
-
-    //public List<AccountTransaction> AccountTransactions { get; set; } = [];
 }

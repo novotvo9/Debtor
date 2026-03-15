@@ -4,39 +4,64 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Debtor</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Debtor.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Debtor</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+    <header class="app-header">
+        <nav class="navbar navbar-expand-lg app-navbar">
+            <div class="container-fluid app-shell py-0">
+                <a class="navbar-brand app-brand" asp-controller="Home" asp-action="Index">
+                    Debtor
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        @if(User.Identity?.IsAuthenticated == false)
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 app-nav">
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                            </li>
+
+                            @if (User.FindFirst("email") != null && User.FindFirst("email")!.Value == "admin@hostmaster.com")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Accounts" asp-action="All">Accounts</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Transactions" asp-action="All">Transactions</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Users" asp-action="All">Users</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto app-nav-right">
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item d-flex align-items-center">
+                                <span class="app-user-pill">
+                                    @User.FindFirst("email")?.Value
+                                </span>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Register">Register</a>
+                                <a class="nav-link" asp-controller="Users" asp-action="Logout">Logout</a>
                             </li>
-                        } else
+                        }
+                        else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                                <a class="nav-link" asp-controller="Users" asp-action="Login">Login</a>
                             </li>
                             <li class="nav-item">
-                                <p class="nav-link text-dark align-middle m-0">User: @User.FindFirst("email")!.Value - (#@User.FindFirst("id")!.Value)</p>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-danger" asp-controller="Users" asp-action="Logout">Odhlásit se</a>
+                                <a class="nav-link" asp-controller="Users" asp-action="Register">Register</a>
                             </li>
                         }
                     </ul>
@@ -44,20 +69,21 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container" style="text-align:center;">
-            &copy; 2026 - Debtor - Vojtěch Novotný IV.C - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <main class="app-main">
+        <div class="app-shell">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="app-shell py-0">
+            &copy; 2026 - Debtor - Vojtěch Novotný IV.C -
+            <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -21,7 +21,6 @@ public partial class RegisterForm : Form
 
     private void Button_Register_Click(object sender, EventArgs e)
     {
-        // TODO: If no account
         if (textBox_Password.Text == textBox_PasswordAgain.Text)
         {
             User newUser = new();

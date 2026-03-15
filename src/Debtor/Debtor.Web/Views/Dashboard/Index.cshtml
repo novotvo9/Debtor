@@ -1,4 +1,5 @@
-﻿@using Debtor.Web.Models.Dashboard
+﻿@using Debtor.DataAcess.Entities
+@using Debtor.Web.Models.Dashboard
 @model DashboardIndexViewModel
 
 @{
@@ -7,48 +8,147 @@
 
 @if (User.FindFirst("email")!.Value == "admin@hostmaster.com")
 {
-    <h1>Admin Panel</h1>
-    <a asp-controller="Accounts" asp-action="All" class="btn btn-primary">All Accounts</a>
-    <a asp-controller="Transactions" asp-action="All" class="btn btn-primary">All Transactions</a>
-    <a asp-controller="Users" asp-action="All" class="btn btn-primary">All Users</a>
+    <div class="page-header">
+        <div class="page-header-text">
+            <h1>Admin Dashboard</h1>
+            <p>Central access point for account, transaction and user management.</p>
+        </div>
+    </div>
+
+    <div class="stat-grid">
+        <div class="stat-box">
+            <div class="stat-label">Accounts</div>
+            <div class="stat-value">Manage</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Transactions</div>
+            <div class="stat-value">Review</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Users</div>
+            <div class="stat-value">Control</div>
+        </div>
+    </div>
+
+    <div class="app-card">
+        <h2 class="app-card-title">Administration</h2>
+        <p class="app-card-subtitle">Choose the section you want to manage.</p>
+
+        <div class="actions-inline">
+            <a asp-controller="Accounts" asp-action="All" class="btn btn-primary">All Accounts</a>
+            <a asp-controller="Transactions" asp-action="All" class="btn btn-primary">All Transactions</a>
+            <a asp-controller="Users" asp-action="All" class="btn btn-outline-secondary">All Users</a>
+        </div>
+    </div>
 }
 else
 {
-    <h1>User Panel</h1>
-    <p>ID: @Model.Account.Id</p>
-    <p>Full Name: @Model.Account.FullName</p>
-    <p>Account Type: @Model.Account.AccountType</p>
-    <p>Email: @Model.Account.Email</p>
-    <p>Phone: @Model.Account.Phone</p>
-    <p>Created At: @Model.Account.CreatedAt</p>
+    <div class="page-header">
+        <div class="page-header-text">
+            <h1>User Dashboard</h1>
+            <p>Overview of your account details, transaction history and current balance.</p>
+        </div>
+    </div>
 
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Account ID</th>
-                <th scope="col">Transaction Type</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Currency</th>
-                <th scope="col">Transaction At</th>
-                <th scope="col">Payment Method</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach (AccountTransaction transaction in Model.Transactions)
-        {
+    <div class="stat-grid">
+        <div class="stat-box">
+            <div class="stat-label">Current Balance</div>
+            <div class="stat-value">@Model.Balance @Model.Currency</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Currency</div>
+            <div class="stat-value">@Model.Currency</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Transactions</div>
+            <div class="stat-value">@Model.Transactions.Count</div>
+        </div>
+    </div>
+
+    <div class="app-card">
+        <h2 class="app-card-title">Account Information</h2>
+        <p class="app-card-subtitle">Basic details connected with your debtor account.</p>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">ID</label>
+                <input class="form-control mono" value="@Model.Account.Id" readonly />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Full Name</label>
+                <input class="form-control" value="@Model.Account.FullName" readonly />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Account Type</label>
+                <input class="form-control" value="@Model.Account.AccountType" readonly />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input class="form-control" value="@Model.Account.Email" readonly />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Phone</label>
+                <input class="form-control" value="@Model.Account.Phone" readonly />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Created At</label>
+                <input class="form-control" value="@Model.Account.CreatedAt" readonly />
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header section-gap">
+        <div class="page-header-text">
+            <h2>Transaction History</h2>
+            <p>List of all transactions currently linked to your account.</p>
+        </div>
+
+        <div class="actions-inline">
+            <a class="btn btn-primary" asp-controller="Transactions" asp-action="Create">Create Transaction</a>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <table class="table table-striped table-hover">
+            <thead>
                 <tr>
-                    <td scope="row">@transaction.Id</td>
-                    <td>@transaction.AccountId</td>
-                    <td>@transaction.TransactionType</td>
-                    <td>@transaction.Amount</td>
-                    <td>@transaction.Currency</td>
-                    <td>@transaction.TransactionAt</td>
-                    <td>@transaction.PaymentMethod</td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Account ID</th>
+                    <th scope="col">Transaction Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Currency</th>
+                    <th scope="col">Transaction At</th>
+                    <th scope="col">Payment Method</th>
                 </tr>
-        }
-        </tbody>
-    </table>
-    <p>Balance: @Model.Balance @Model.Currency</p>
-    <a class="btn btn-primary" asp-controller="Transactions" asp-action="Create">Create</a>
+            </thead>
+            <tbody>
+                @foreach (AccountTransaction transaction in Model.Transactions)
+                {
+                    <tr>
+                        <td>@transaction.Id</td>
+                        <td class="mono">@transaction.AccountId</td>
+                        <td>
+                            <span class="badge-soft">@transaction.TransactionType</span>
+                        </td>
+                        <td>@transaction.Amount</td>
+                        <td>@transaction.Currency</td>
+                        <td>@transaction.TransactionAt</td>
+                        <td>@transaction.PaymentMethod</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="app-card app-card-sm">
+        <h2 class="app-card-title">Balance Summary</h2>
+        <p class="mb-0">
+            <strong>Balance:</strong> @Model.Balance @Model.Currency
+        </p>
+    </div>
 }

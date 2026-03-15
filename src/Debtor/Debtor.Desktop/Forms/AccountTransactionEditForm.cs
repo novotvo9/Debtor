@@ -9,18 +9,33 @@ public partial class AccountTransactionEditForm : Form
     public List<string> TransactionTypes { get; set; } = [];
     public List<Account> Accounts { get; set; } = [];
     public User LoggedUser { get; set; }
-    public AccountTransactionEditForm(User loggedUser)
+    public bool UpdateOp { get; set; } = false;
+    public AccountTransactionEditForm(User loggedUser, bool update)
     {
         InitializeComponent();
         LoadCombobox();
         LoggedUser = loggedUser;
+        UpdateOp = update;
+
+        comboBox_Accounts.Enabled = false;
+
         if (LoggedUser.Email != "admin@hostmaster.com")
         {
             comboBox_Accounts.SelectedItem = MyDbContext.Accounts.FirstOrDefault(a => a.Email == LoggedUser.Email)!.Id.ToString();
         }
-        comboBox_Accounts.Enabled = false;
+        else
+        {
+            if (UpdateOp == true)
+            {
+                comboBox_Accounts.Enabled = false;
+            }
+            else
+            {
+                comboBox_Accounts.Enabled = true;
+            }
+        }
 
-        int count = 0;
+            int count = 0;
         Account? usersAccount = MyDbContext.Accounts.FirstOrDefault(a => a.Email == LoggedUser.Email);
         if (usersAccount != null)
         {

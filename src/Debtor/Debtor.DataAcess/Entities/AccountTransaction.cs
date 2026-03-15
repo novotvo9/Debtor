@@ -25,7 +25,6 @@ public class AccountTransaction
     [Column("currency")]
     [DisplayName("Currency")]
     public string Currency { get; set; }
-    //TODO: POŘEŠIT RŮZNÉ MĚNY NA JEDNOM ÚČTU, PŘEDVYPLNIT
 
     [Column("transaction_at")]
     [DisplayName("Transaction At")]
@@ -34,10 +33,4 @@ public class AccountTransaction
     [Column("payment_method")]
     [DisplayName("Payment Method")]
     public string PaymentMethod { get; set; }
-    /*
-    [DisplayName("Account")]
-    [ForeignKey(nameof(AccountId))]
-    [Browsable(false)]
-    public Account Account { get; set; }
-    */
 }

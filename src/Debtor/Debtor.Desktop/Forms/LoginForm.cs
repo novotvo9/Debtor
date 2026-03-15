@@ -32,7 +32,7 @@ public partial class LoginForm : Form
                 Account? account = MyDbContext.Accounts.FirstOrDefault(a => a.Email == userToCheck.Email);
                 if (account == null && userToCheck.Email != "admin@hostmaster.com")
                 {
-                    AccountEditForm createForm = new(userToCheck);
+                    AccountEditForm createForm = new(userToCheck, false);
                     this.Hide();
                     DialogResult dialogResult = createForm.ShowDialog();
 

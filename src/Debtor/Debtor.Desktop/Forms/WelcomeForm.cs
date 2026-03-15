@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-
-namespace Debtor.Desktop.Forms;
+﻿namespace Debtor.Desktop.Forms;
 
 public partial class WelcomeForm : Form
 {

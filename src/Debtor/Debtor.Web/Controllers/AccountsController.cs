@@ -98,7 +98,6 @@ public class AccountsController : Controller
                     return RedirectToAction("All", "Accounts");
                 }
                 return RedirectToAction("Index", "Dashboard");
-
                 //return RedirectToAction(nameof(Detail), new { id = newAccount.Id });
             }
 

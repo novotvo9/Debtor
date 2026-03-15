@@ -29,14 +29,6 @@
                 </select>
             }
     }
-    @* <select asp-for="AccountId" class="form-select" id="accountId">
-        @foreach (Account account in Model.Accounts!)
-        {
-            <option value="@account.Id">
-                @account.Id
-            </option>
-        }
-    </select> *@
 
     <label for="transactionType" class="form-label">Transation Type:</label>
     <select asp-for="TransactionType" class="form-select" id="transactionType">
@@ -48,11 +40,6 @@
         <label for="amount" class="form-label">Amount:</label>
         <input asp-for="Amount" type="number" class="form-control" id="amount" value="1" min="1" max="9999999999999999.99">
     </div>
-
-    @* <div class="mb-3">
-        <label for="currency" class="form-label">Currency:</label>
-        <input asp-for="Currency" type="text" class="form-control" id="currency" maxlength="3">
-    </div> *@
 
     @if (User.Identity!.IsAuthenticated)
     {
@@ -71,8 +58,6 @@
             </div>
         }
     }
-
-
 
     <label for="paymentMethod" class="form-label">Payment Method:</label>
     <select asp-for="PaymentMethod" class="form-select" id="paymentMethod">

@@ -31,18 +31,15 @@
                 <td>@transaction.Currency</td>
                 <td>@transaction.TransactionAt</td>
                 <td>@transaction.PaymentMethod</td>
-                @* TODO: přidat modaly *@
                 <td>
                     <a asp-controller="Transactions" asp-action="Update" asp-route-id="@transaction.Id" class="btn btn-warning">Update</a>
                 </td>
                 <td>
                     <form method="post" asp-controller="Transactions" asp-action="Delete" asp-route-id="@transaction.Id">
-                        <!-- Button trigger modal -->
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@transaction.Id">
                             Delete
                         </button>
 
-                        <!-- Modal -->
                         <div class="modal fade" id="deleteModal-@transaction.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
