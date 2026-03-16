@@ -29,7 +29,7 @@ public class TransactionsController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        if (HttpContext.User.FindFirstValue("email") != "admin@hostmaster.com")
+        if (HttpContext.User.FindFirstValue("email") == null)
         {
             return RedirectToAction("Index", "Dashboard");
         }
